@@ -1,0 +1,12 @@
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.AssemblyInfoInputs.cache
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.AssemblyInfo.cs
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\bin\Debug\net8.0\BankSalemDataAccessLayer.deps.json
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\bin\Debug\net8.0\BankSalemDataAccessLayer.dll
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\bin\Debug\net8.0\BankSalemDataAccessLayer.pdb
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.csproj.AssemblyReference.cache
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.dll
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\refint\BankSalemDataAccessLayer.dll
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.pdb
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\ref\BankSalemDataAccessLayer.dll

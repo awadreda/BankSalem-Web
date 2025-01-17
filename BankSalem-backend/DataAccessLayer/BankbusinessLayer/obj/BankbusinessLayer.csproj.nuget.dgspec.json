@@ -1,0 +1,142 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj": {}
+  },
+  "projects": {
+    "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj",
+        "projectName": "BankbusinessLayer",
+        "projectPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\",
+        "outputPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Alsayad Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\LocalNugetPackages": {},
+          "C:\\Packages\\nuget\\nuget.packaging.6.11.1.nupkg": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj": {
+                "projectPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj",
+        "projectName": "BankSalemDataAccessLayer",
+        "projectPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\",
+        "outputPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Alsayad Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\LocalNugetPackages": {},
+          "C:\\Packages\\nuget\\nuget.packaging.6.11.1.nupkg": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "folders": [
+	{
+		"path": "BankSalem-backend/DataAccessLayer/BankSalemDataAccessLayer"
+	},
+	{
+		"path": "BankSalem-backend/DataAccessLayer/BankbusinessLayer"
+	},
+	{
+		"path": "BankSalem-backend/DataAccessLayer/MyBankProjectConsoleForWeb"
+	},
+	{
+		"path": "BankSalem-backend/DataAccessLayer/BankWepAPI"
+	},
+	{
+		"path": "../../../BackEnd/learningBack/.NET/WebAPI/Hadhoud.api/StudenstProject/StudentsCURD"
+	},
+	{
+		"path": "../../../BackEnd/learningBack/.NET/WebAPI/Hadhoud.api/StudenstProject/studentDataAccessLayer"
+	},
+	{
+		"path": "../../../BackEnd/learningBack/.NET/WebAPI/Hadhoud.api/StudenstProject/StudentBuisnessLayer"
+	}
+],
+  "settings": {}
+}

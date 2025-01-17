@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "C1CfdbSaN8ctjVhmXa8fEfVHuJZ4RS/PrRLkrphApmI=",
+  "Source": "BankWepAPI",
+  "BasePath": "_content/BankWepAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
