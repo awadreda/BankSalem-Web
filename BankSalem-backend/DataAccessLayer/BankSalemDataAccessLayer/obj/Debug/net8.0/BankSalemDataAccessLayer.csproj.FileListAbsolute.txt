@@ -10,3 +10,4 @@ c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataA
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\refint\BankSalemDataAccessLayer.dll
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.pdb
 C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\ref\BankSalemDataAccessLayer.dll
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankSalemDataAccessLayer\obj\Debug\net8.0\BankSalemDataAccessLayer.sourcelink.json

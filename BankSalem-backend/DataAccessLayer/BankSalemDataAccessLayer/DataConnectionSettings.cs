@@ -11,7 +11,7 @@ namespace BankSalemDataAccessLayer
     public static class DataConnectionSettings
     {
         private static string _ConnectionString =
-            "Server=127.0.0.1,1433;Database=MyBankDB;User Id=SA;Password=Str0ngP@ssw0rd2025!;";
+            "workstation id=myBankDb.mssql.somee.com;packet size=4096;user id=awad_SQLLogin_1;pwd=pl16pd8iy9;data source=myBankDb.mssql.somee.com;persist security info=False;initial catalog=myBankDb;TrustServerCertificate=True;";
 
         public static string ConnectionString
         {

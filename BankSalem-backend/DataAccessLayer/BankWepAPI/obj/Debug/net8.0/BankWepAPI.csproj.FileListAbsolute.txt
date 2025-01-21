@@ -40,3 +40,4 @@ c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataA
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\obj\Debug\net8.0\BankWepAPI.pdb
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\obj\Debug\net8.0\BankWepAPI.genruntimeconfig.cache
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\obj\Debug\net8.0\ref\BankWepAPI.dll
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\obj\Debug\net8.0\BankWepAPI.sourcelink.json

@@ -21,7 +21,7 @@ namespace BankbusinessLayer
 
         public string AccountNumber { set; get; }
         public string PINCODE { set; get; }
-        public float AccountBalance { set; get; }
+        public double AccountBalance { set; get; }
 
         enMode Mode = enMode.AddNew;
 
@@ -44,7 +44,7 @@ namespace BankbusinessLayer
             string Phone,
             string AccountNumber,
             string PINCODE,
-            float AccountBalance
+            double AccountBalance
         )
             : base(PersonID, FirstName, LastName, Email, Phone)
         {
@@ -82,7 +82,7 @@ namespace BankbusinessLayer
             string Email = "";
             string AccountNumber = "";
             string PINCODE = "";
-            float AccountBalance = 0;
+            double AccountBalance = 0;
 
             if (
                 ClientsData.getClinet(
@@ -126,7 +126,7 @@ namespace BankbusinessLayer
 
             string AccountNumber = "";
             string PINCODE = "";
-            float AccountBalance = 0;
+            double AccountBalance = 0;
 
             if (
                 ClientsData.getClientByEmail(
@@ -170,7 +170,7 @@ namespace BankbusinessLayer
             string Email = "";
 
             string PINCODE = "";
-            float AccountBalance = 0;
+            double AccountBalance = 0;
 
             if (
                 ClientsData.getClientByAccountNumber(
@@ -215,7 +215,7 @@ namespace BankbusinessLayer
 
             string AccountNumber = "";
             string PINCODE = "";
-            float AccountBalance = 0;
+            double AccountBalance = 0;
 
             if (
                 ClientsData.getClientByFirstName(
@@ -333,19 +333,19 @@ namespace BankbusinessLayer
             Transfer = 3,
         }
 
-        public bool Deposite(float Amount, int UserID)
+        public bool Deposite(double Amount, int UserID)
         {
-            float BalanceBeforeDeposite = this.AccountBalance;
+            double BalanceBeforeDeposite = this.AccountBalance;
             this.AccountBalance += Amount;
-            float BalanceAfterDeposite = this.AccountBalance;
+            double BalanceAfterDeposite = this.AccountBalance;
 
             if (
                 TransActionData.SaveDepositeOrWithDraw(
                     UserID,
                     this.ClientID,
-                    Amount,
-                    BalanceBeforeDeposite,
-                    BalanceAfterDeposite,
+                    (float)Amount,
+                    (float)BalanceBeforeDeposite,
+                    (float)BalanceAfterDeposite,
                     (int)enTransActionType.Depostie
                 )
             )
@@ -356,19 +356,19 @@ namespace BankbusinessLayer
             return false;
         }
 
-        public bool WithDraw(float Amount, int UserID)
+        public bool WithDraw(double Amount, int UserID)
         {
-            float BalanceBeforeDeposite = this.AccountBalance;
+            double BalanceBeforeDeposite = this.AccountBalance;
             this.AccountBalance -= Amount;
-            float BalanceAfterDeposite = this.AccountBalance;
+            double BalanceAfterDeposite = this.AccountBalance;
 
             if (
                 TransActionData.SaveDepositeOrWithDraw(
                     UserID,
                     this.ClientID,
-                    Amount,
-                    BalanceBeforeDeposite,
-                    BalanceAfterDeposite,
+                    (float)Amount,
+                    (float)BalanceBeforeDeposite,
+                    (float)BalanceAfterDeposite,
                     (int)enTransActionType.Withdraw
                 )
             )
@@ -379,26 +379,26 @@ namespace BankbusinessLayer
             return false;
         }
 
-        public bool Transfer(float Amount, ClientsBusiness Reciver, int UserID)
+        public bool Transfer(double Amount, ClientsBusiness Reciver, int UserID)
         {
-            float ClientBalanceBerfore = this.AccountBalance;
+            double ClientBalanceBerfore = this.AccountBalance;
             this.AccountBalance -= Amount;
-            float ClientBalanceAfter = this.AccountBalance;
+            double ClientBalanceAfter = this.AccountBalance;
 
-            float ReciverBalanceBerfore = Reciver.AccountBalance;
+            double ReciverBalanceBerfore = Reciver.AccountBalance;
             Reciver.AccountBalance += Amount;
-            float ReciverBalanceAfter = Reciver.AccountBalance;
+            double ReciverBalanceAfter = Reciver.AccountBalance;
 
             if (
                 TransActionData.SaveTransfer(
                     UserID,
                     this.ClientID,
                     Reciver.ClientID,
-                    Amount,
-                    ClientBalanceBerfore,
-                    ClientBalanceAfter,
-                    ReciverBalanceBerfore,
-                    ReciverBalanceAfter,
+                    (float)Amount,
+                    (float)ClientBalanceBerfore,
+                    (float)ClientBalanceAfter,
+                    (float)ReciverBalanceBerfore,
+                    (float)ReciverBalanceAfter,
                     (int)enTransActionType.Transfer
                 )
             )

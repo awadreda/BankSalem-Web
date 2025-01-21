@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BankbusinessLayer;
+using BankbusinessLayer.DTOs;
 using BankSalemDataAccessLayer;
 
 namespace BankbusinessLayer
@@ -53,7 +54,25 @@ namespace BankbusinessLayer
             Mode = enMode.Update;
         }
 
-        public static UserBussinees FindUserByID(int ID)
+        public UserDTO UDTO
+        {
+            get
+            {
+                return new UserDTO(
+                    this.User_ID,
+                    this.UserName,
+                    this.Password,
+                    this.Permission,
+                    this.FirstName,
+                    this.LastName,
+                    this.Email,
+                    this.Phone
+                );
+                                            
+            }
+        }
+
+        public static UserBussinees? FindUserByID(int ID)
         {
             int PersonID = -1;
             string FirstName = "";
@@ -176,18 +195,18 @@ namespace BankbusinessLayer
             switch (Mode)
             {
                 case enMode.Addnew:
+                {
+                    if (_AddNewUser())
                     {
-                        if (_AddNewUser())
-                        {
-                            Mode = enMode.Update;
-                            return true;
-                        }
-                        return false;
+                        Mode = enMode.Update;
+                        return true;
                     }
+                    return false;
+                }
                 case enMode.Update:
-                    {
-                        return _UpdateUser();
-                    }
+                {
+                    return _UpdateUser();
+                }
             }
             return false;
         }

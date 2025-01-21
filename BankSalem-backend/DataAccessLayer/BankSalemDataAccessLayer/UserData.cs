@@ -34,7 +34,7 @@ namespace BankSalemDataAccessLayer
             try
             {
                 connection.Close();
-            
+
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {

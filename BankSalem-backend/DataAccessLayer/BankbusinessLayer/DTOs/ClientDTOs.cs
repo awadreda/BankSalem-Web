@@ -9,14 +9,13 @@ namespace BankbusinessLayer.DTOs
     {
         public ClientDTO(
             int ID,
-
             string FirstName,
             string LastName,
             string Email,
             string Phone,
             string AccountNumber,
             string PINCODE,
-            float AccountBalance
+            double AccountBalance
         )
         {
             this.ID = ID;
@@ -38,6 +37,6 @@ namespace BankbusinessLayer.DTOs
         public string Phone { get; set; }
         public string AccountNumber { get; set; }
         public string PINCODE { get; set; }
-        public float AccountBalance { get; set; }
+        public double AccountBalance { get; set; }
     }
 }

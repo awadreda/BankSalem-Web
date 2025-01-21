@@ -8,9 +8,6 @@ using System.Threading.Tasks;
 
 namespace BankSalemDataAccessLayer
 {
-   
-
-
     public class ClientsData
     {
         public static bool getClinet(
@@ -22,7 +19,7 @@ namespace BankSalemDataAccessLayer
             ref string Phone,
             ref string AccountNumber,
             ref string PINCODE,
-            ref float AccountBalance
+            ref double AccountBalance
         )
         {
             bool isFound = false;
@@ -80,7 +77,7 @@ namespace BankSalemDataAccessLayer
             ref string Phone,
             ref string AccountNumber,
             ref string PINCODE,
-            ref float AccountBalance
+            ref double AccountBalance
         )
         {
             bool isFound = false;
@@ -139,7 +136,7 @@ namespace BankSalemDataAccessLayer
             ref string Phone,
             ref string AccountNumber,
             ref string PINCODE,
-            ref float AccountBalance
+            ref double AccountBalance
         )
         {
             bool isFound = false;
@@ -198,7 +195,7 @@ namespace BankSalemDataAccessLayer
             ref string LastName,
             ref string Phone,
             ref string PINCODE,
-            ref float AccountBalance
+            ref double AccountBalance
         )
         {
             bool isFound = false;
@@ -381,7 +378,7 @@ namespace BankSalemDataAccessLayer
         }
 
         //public static bool AddNewCLientint(ref int ClientID,ref int  Person_id , string FirstName,  string LastName,  string Email,  string Phone,  string AccountNumber
-        //  ,  string PINCODE,  float AccountBalance)
+        //  ,  string PINCODE,  double AccountBalance)
         //{
 
 
@@ -474,7 +471,7 @@ namespace BankSalemDataAccessLayer
             string Phone,
             string AccountNumber,
             string PINCODE,
-            float AccountBalance
+            double AccountBalance
         )
         {
             bool result = false;
@@ -537,7 +534,7 @@ namespace BankSalemDataAccessLayer
             string Phone,
             string AccountNumber,
             string PINCODE,
-            float AccountBalance
+            double AccountBalance
         )
         {
             int RowsAffected = 0;

@@ -14,7 +14,9 @@ namespace MyBanKProjectConsole
         {
             if (ClientsBusiness.isClientExistbyID(ID))
             {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 ClientsBusiness Client = ClientsBusiness.FindClient(ID);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
                 if (Client != null)
                 {

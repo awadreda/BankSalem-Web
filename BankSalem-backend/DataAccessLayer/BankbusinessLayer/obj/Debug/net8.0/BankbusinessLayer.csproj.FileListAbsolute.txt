@@ -13,3 +13,4 @@ c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataA
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Debug\net8.0\refint\BankbusinessLayer.dll
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Debug\net8.0\BankbusinessLayer.pdb
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Debug\net8.0\ref\BankbusinessLayer.dll
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Debug\net8.0\BankbusinessLayer.sourcelink.json
