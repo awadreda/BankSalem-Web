@@ -17,7 +17,7 @@ namespace BankWepAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task <ActionResult<ClientDTO>> GetClientByID(int id)
+        public ActionResult<ClientDTO> GetClientByID(int id)
         {
             if (id < 1)
             {
@@ -146,13 +146,10 @@ namespace BankWepAPI.Controllers
             Client.AccountNumber = UpdatedClient.AccountNumber;
             Client.AccountBalance = UpdatedClient.AccountBalance;
 
-                if(Client.Save())
-                {
-
-
-
+            if (Client.Save())
+            {
                 return Ok(UpdatedClient);
-                }
+            }
 
             return StatusCode(500, new { message = "Error Updting CLient" });
         }

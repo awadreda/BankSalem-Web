@@ -68,7 +68,6 @@ namespace BankbusinessLayer
                     this.Email,
                     this.Phone
                 );
-                                            
             }
         }
 

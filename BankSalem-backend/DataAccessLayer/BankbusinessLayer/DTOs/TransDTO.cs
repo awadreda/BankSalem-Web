@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 
 namespace BankbusinessLayer.DTOs
 {
-
-
     /*
     SELECT TOP (1000) [TransActionS_ID]
       ,[TransActoin_Type_ID]
@@ -25,10 +23,10 @@ namespace BankbusinessLayer.DTOs
     */
     public class TransDTO
     {
-            public int TransActionID { get; set; } // Corresponds to TransActionS_ID
+        public int TransActionID { get; set; } // Corresponds to TransActionS_ID
         public int TransActionTypeID { get; set; } // Corresponds to TransActoin_Type_ID
         public string TransActionTypeName { get; set; } //
-            public int UserID { get; set; } // Corresponds to User_ID
+        public int UserID { get; set; } // Corresponds to User_ID
         public int ClientID { get; set; } // Corresponds to ClientID
         public int? ReciverID { get; set; } // Corresponds to Reciver_ID (nullable if receiver is optional)
         public DateTime TransActionDateTime { get; set; } // Corresponds to TransAction_Date_TIme
@@ -47,11 +45,11 @@ namespace BankbusinessLayer.DTOs
             int clientID,
             int? reciverID,
             DateTime transActionDateTime,
-           double amount,
-           double clientAmountBefore,
-           double clientAmountAfter,
-           double reciverAmountBefore,
-           double reciverAmountAfter
+            double amount,
+            double clientAmountBefore,
+            double clientAmountAfter,
+            double reciverAmountBefore,
+            double reciverAmountAfter
         )
         {
             TransActionID = transActionID;
