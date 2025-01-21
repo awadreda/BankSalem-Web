@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankSalemDataAccessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+038c194ce1691152596c490c386c746af2ec92ef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ec6416c3242f381d9f3469f3598d153de8142ca")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankSalemDataAccessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankSalemDataAccessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

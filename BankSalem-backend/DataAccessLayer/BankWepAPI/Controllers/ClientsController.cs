@@ -17,7 +17,7 @@ namespace BankWepAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<ClientDTO> GetClientByID(int id)
+        public async Task <ActionResult<ClientDTO>> GetClientByID(int id)
         {
             if (id < 1)
             {

@@ -105,7 +105,7 @@ namespace BankSalemDataAccessLayer
             command.Parameters.AddWithValue("@TransAction_Date_TIme", DateTime.Now);
             command.Parameters.AddWithValue("@Amount", Amount);
             command.Parameters.AddWithValue("@Client_Amount_Before", CLientBalanceBefore);
-            command.Parameters.AddWithValue("@Client_Amount_After", ReciverBalanceBefore);
+            command.Parameters.AddWithValue("@Client_Amount_After", ClientBalaceAfter);
             command.Parameters.AddWithValue("@Reciver_Amount_Berfore", ReciverBalanceBefore);
             command.Parameters.AddWithValue("@Reciver_Amount_After", ReciverBalanceAfter);
 
