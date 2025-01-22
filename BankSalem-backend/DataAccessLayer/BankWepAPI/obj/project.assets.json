@@ -951,8 +951,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj": {
-              "projectPath": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj"
+            "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj": {
+              "projectPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj"
             }
           }
         }
