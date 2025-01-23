@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj": {}
+    "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj": {}
   },
   "projects": {
     "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj": {
@@ -138,14 +138,14 @@
         }
       }
     },
-    "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj": {
+    "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj",
+        "projectUniqueName": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj",
         "projectName": "BankWepAPI",
-        "projectPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj",
+        "projectPath": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj",
         "packagesPath": "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\",
-        "outputPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\obj\\",
+        "outputPath": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alsayad Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
