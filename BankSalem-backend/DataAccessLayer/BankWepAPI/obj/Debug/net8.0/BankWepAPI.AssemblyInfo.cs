@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankWepAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+108cda850b03b9d0c7b44cb42e65ec1fba3a7565")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a7df1dee1ab0deb02f0d8d28fd0724295c7fafe")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankWepAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankWepAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

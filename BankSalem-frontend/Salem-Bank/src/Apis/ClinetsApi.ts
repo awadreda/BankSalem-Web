@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Client } from '../Types/types';
 
 const api = axios.create({
   baseURL: `http://localhost:5225/api`, // Use the proxy
@@ -16,7 +17,6 @@ export const getClients = async () => {
         Accept: "text/plain",
       },
     });
-    console.log(response);
     return response.data;
   } catch (error) {
     console.error("Error fetching clients:", error);
@@ -25,4 +25,26 @@ export const getClients = async () => {
 };
 
 
+ export const addNewClient = async (client:Client) => {
 
+  try {
+    const response = await api.post(`/Clients`,client,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "text/plain",
+      },
+    });
+
+    console.log(response);
+    return  response;
+    
+  } 
+  catch (error) {
+    console.error("Error adding new client:", error);
+    throw error;
+  } finally {
+    // Any cleanup code can go here
+  }
+
+}

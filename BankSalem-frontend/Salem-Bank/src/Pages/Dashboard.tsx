@@ -1,17 +1,13 @@
-import React from 'react'
-import ClientsTable from '../components/ClientsTable'
+import ClientsTable from "../components/ClientsComponets/ClientsTable";
 
 export default function Dashboard() {
   return (
-   <>
-    <div>
-      <h1>Dashboard</h1>
-       
-        <ClientsTable/>
+    <>
+      <div>
 
-       
-       </div>
 
+        <ClientsTable />
+      </div>
     </>
-  )
+  );
 }
