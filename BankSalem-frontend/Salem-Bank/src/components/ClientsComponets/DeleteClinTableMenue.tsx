@@ -5,6 +5,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useAppDispatch } from "../../hooks";
+import { DeleteClientSliceFuction, fetchClients } from "../../features/Clinets/ClinetsSlice";
 
 export default function DeleteClinTableMenue({
   ClientID,
@@ -14,6 +16,13 @@ export default function DeleteClinTableMenue({
   onClose: () => void;
 }) {
   const [open, setOpen] = React.useState(false);
+  const dispatch= useAppDispatch();
+
+  const handleDelete = () => {
+    dispatch(DeleteClientSliceFuction(ClientID)).then(() => {
+        dispatch(fetchClients()); })
+      ;
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,17 +63,20 @@ export default function DeleteClinTableMenue({
               handleClose();
               onClose();
             }}
+            autoFocus
           >
-            Disagree
+            Cancel
           </Button>
           <Button
             onClick={() => {
               handleClose();
               onClose();
+              handleDelete();
             }}
-            autoFocus
+           color="error"
+
           >
-            Agree
+            Delete
           </Button>
         </DialogActions>
       </Dialog>
