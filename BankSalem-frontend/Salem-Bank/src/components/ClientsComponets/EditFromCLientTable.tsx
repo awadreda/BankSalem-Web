@@ -6,10 +6,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Client } from "../../Types/types";
-import { addClinet, fetchClients, FindClientByIdClientSlice, UpdateClientSlice } from "../../features/Clinets/ClinetsSlice";
+import {  fetchClients, FindClientByIdClientSlice, UpdateClientSlice } from "../../features/Clinets/ClinetsSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useEffect, useState } from "react";
-import { UpdateClientApi } from "../../Apis/ClinetsApi";
 
 export default function EditFromCLientTable({ClientId,onClose }: {ClientId:number,onClose:()=>void}) {
   const dispatch = useAppDispatch();

@@ -55,7 +55,7 @@ export interface TransferRequest {
 
 
 
-export interface DepositRequest {
+export interface Deposit_WithDraw_Request {
   clientId: number; // integer($int32)
   amount: number; // number($double)
   userId: number; // integer($int32)
