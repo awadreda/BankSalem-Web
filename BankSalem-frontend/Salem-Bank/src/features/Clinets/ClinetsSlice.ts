@@ -83,6 +83,8 @@ const ClinetSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
+        
       .addCase(FindClientByIdClientSlice.pending, (state) => {
         state.state = "loading";
       })
@@ -130,18 +132,19 @@ const ClinetSlice = createSlice({
       .addCase(DeleteClientSliceFuction.rejected, (state, action) => {
         state.state = "failed";
         state.error = action.error.message || "failed To Delete Clinet";
-      }).addCase(UpdateClientSlice.pending, (state) => {
+      })
+      .addCase(UpdateClientSlice.pending, (state) => {
         state.state = "loading";
-      }).addCase(UpdateClientSlice.fulfilled, (state, action) => {
+      })
+      .addCase(UpdateClientSlice.fulfilled, (state, action) => {
         state.state = "idle";
         state.client = action.payload;
         console.log("action.payload : ", action.payload);
-      }).addCase(UpdateClientSlice.rejected, (state, action) => { 
-        state.state = "failed";
-        state.error = action.error.message || "failed To Update Clinet"
       })
-      
-      ;
+      .addCase(UpdateClientSlice.rejected, (state, action) => {
+        state.state = "failed";
+        state.error = action.error.message || "failed To Update Clinet";
+      });
   },
 });
 
