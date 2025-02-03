@@ -14,7 +14,6 @@ import { fetchClients } from "../../features/Clinets/ClinetsSlice";
 import AddClient from "./AddClient";
 import RowClineMenue from "./RowClineMenue";
 
-
 export interface Client {
   id: number; // integer($int32)
   firstName: string | null; // string, nullable: true
@@ -154,16 +153,6 @@ export default function ClientsTable() {
     }
   }, []);
 
-  if (ClientsAPI.state === "loading") {
-    // return <div>Loading...</div>;
-    clients = clientsSample;
-  }
-
-  if (ClientsAPI.state === "failed") {
-    clients = clientsSample;
-    // return <div>Error: {ClientsAPI.error}</div>;
-  }
-
   const handleClientRowClick = (
     event: React.MouseEvent<HTMLElement>,
     id: number
@@ -179,11 +168,11 @@ export default function ClientsTable() {
     setSelectedClientId(-1);
   };
 
-  const handleEdit = (selectedClientID:number) => {
+  const handleEdit = (selectedClientID: number) => {
     console.log("Edit client:", selectedClientID);
   };
 
-  const handleDelete = (selectedClientID:number) => {
+  const handleDelete = (selectedClientID: number) => {
     console.log("Delete client:", selectedClientID);
   };
 
@@ -241,7 +230,9 @@ export default function ClientsTable() {
                 .map((client) => {
                   return (
                     <TableRow
-                      onClick={(event) => handleClientRowClick(event,client.id)} // Handle client click
+                      onClick={(event) =>
+                        handleClientRowClick(event, client.id)
+                      } // Handle client click
                       hover
                       role="checkbox"
                       tabIndex={-1}
@@ -277,7 +268,7 @@ export default function ClientsTable() {
             onClose={handleClose}
             selectedClientID={selectedClientID}
             onEdit={() => handleEdit(selectedClientID)}
-            onDelete={ () => handleDelete(selectedClientID) }
+            onDelete={() => handleDelete(selectedClientID)}
           />
         </TableContainer>
         <TablePagination

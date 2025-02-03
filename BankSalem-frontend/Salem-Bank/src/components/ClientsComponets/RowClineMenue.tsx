@@ -2,6 +2,7 @@ import * as React from "react";
 import { Menu, MenuItem } from "@mui/material";
 import DeleteClinTableMenue from "./DeleteClinTableMenue";
 import EditFromCLientTable from "./EditFromCLientTable";
+import TransactionsMenu from "../TransactionComponets/TransactionsMenu";
 
 export interface RowMenuProps {
   anchorEl: HTMLElement | null;
@@ -43,8 +44,11 @@ const RowClineMenue: React.FC<RowMenuProps> = ({
           }
         }}
       >
-      <EditFromCLientTable ClientId={selectedClientID} onClose={onClose} />
+        <EditFromCLientTable ClientId={selectedClientID} onClose={onClose} />
         {/* Edit */}
+      </MenuItem>
+      <MenuItem>
+        <TransactionsMenu selectedClientID={selectedClientID} />
       </MenuItem>
 
       <MenuItem
@@ -55,12 +59,11 @@ const RowClineMenue: React.FC<RowMenuProps> = ({
           }
         }}
       >
-      <DeleteClinTableMenue 
-     onClose={onClose} ClientID={selectedClientID} />
-        
+        <DeleteClinTableMenue onClose={onClose} ClientID={selectedClientID} />
       </MenuItem>
     </Menu>
   );
 };
+
 
 export default RowClineMenue;
