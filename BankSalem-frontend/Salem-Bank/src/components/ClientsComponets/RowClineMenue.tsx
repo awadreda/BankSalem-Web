@@ -3,6 +3,7 @@ import { Menu, MenuItem } from "@mui/material";
 import DeleteClinTableMenue from "./DeleteClinTableMenue";
 import EditFromCLientTable from "./EditFromCLientTable";
 import TransactionsMenu from "../TransactionComponets/TransactionsMenu";
+import ShowClientCard from "./ShowClientCard";
 
 export interface RowMenuProps {
   anchorEl: HTMLElement | null;
@@ -36,9 +37,14 @@ const RowClineMenue: React.FC<RowMenuProps> = ({
         horizontal: "left",
       }}
     >
+
+      <MenuItem>
+        <ShowClientCard selectedClientID={selectedClientID} />
+      </MenuItem>
       <MenuItem
         onClick={() => {
           if (selectedClientID) {
+
             onEdit(selectedClientID);
             // onClose();
           }
