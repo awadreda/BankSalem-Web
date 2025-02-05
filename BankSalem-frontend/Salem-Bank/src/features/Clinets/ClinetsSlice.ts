@@ -9,6 +9,7 @@ import { Client } from "../../Types/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface ClientState {
+  [x: string]: any;
   clients: Client[];
   state: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;

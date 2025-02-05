@@ -13,11 +13,13 @@ import HistoryIcon from '@mui/icons-material/History';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
+import PeopleIcon from '@mui/icons-material/People';
 
 const drawerWidth = 240;
 
 const menuItems = [
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
+  { text: 'Clients', icon: <PeopleIcon />, path: '/clients' },
   { text: 'Transactions', icon: <PaymentsIcon />, path: '/transactions' },
   { text: 'Logs History', icon: <HistoryIcon />, path: '/logs' },
   { text: 'Admin', icon: <AdminPanelSettingsIcon />, path: '/admin' },
