@@ -11,7 +11,10 @@ export interface RowMenuProps {
   selectedClientID: number | -1;
   onEdit: (selectedClientID: number) => void;
   onDelete: (selectedClientID: number) => void;
+  
 }
+
+
 
 const RowClineMenue: React.FC<RowMenuProps> = ({
   anchorEl,
@@ -19,6 +22,7 @@ const RowClineMenue: React.FC<RowMenuProps> = ({
   selectedClientID,
   onEdit,
   // onDelete,
+  
 }) => {
   const open = Boolean(anchorEl);
 
@@ -54,8 +58,9 @@ const RowClineMenue: React.FC<RowMenuProps> = ({
         {/* Edit */}
       </MenuItem>
       <MenuItem>
-        <TransactionsMenu selectedClientID={selectedClientID} />
+        <TransactionsMenu  selectedClientID={selectedClientID} />
       </MenuItem>
+
 
       <MenuItem
         onClick={() => {

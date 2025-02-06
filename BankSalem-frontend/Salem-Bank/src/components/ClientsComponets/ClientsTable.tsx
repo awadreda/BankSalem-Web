@@ -34,11 +34,10 @@ interface Column {
 }
 
 const columns: Column[] = [
+  { id: "id", label: "Client ID", minWidth: 50 },
   { id: "firstName", label: "Full Name", minWidth: 150 }, // Merged First Name and Last Name
   { id: "email", label: "Email", minWidth: 150 },
-  { id: "phone", label: "Phone", minWidth: 150 },
-  { id: "accountNumber", label: "Account Number", minWidth: 150 },
-  { id: "pincode", label: "Pincode", minWidth: 100 },
+  { id: "accountNumber", label: "Account Number", minWidth: 100 },
   {
     id: "accountBalance",
     label: "Account Balance",
@@ -166,11 +165,18 @@ export default function ClientsTable() {
   const handleClose = () => {
     setAnchorEl(null);
     setSelectedClientId(-1);
+    RefreshClients();
   };
+
+  const RefreshClients = () => {
+    dispatch(fetchClients());
+  };
+  
 
   const handleEdit = (selectedClientID: number) => {
     console.log("Edit client:", selectedClientID);
   };
+
 
   const handleDelete = (selectedClientID: number) => {
     console.log("Delete client:", selectedClientID);
@@ -269,6 +275,9 @@ export default function ClientsTable() {
             selectedClientID={selectedClientID}
             onEdit={() => handleEdit(selectedClientID)}
             onDelete={() => handleDelete(selectedClientID)}
+            
+
+
           />
         </TableContainer>
         <TablePagination

@@ -11,11 +11,16 @@ import {  FindClientByIdClientSlice } from "../../features/Clinets/ClinetsSlice"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Avatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
+import { DepositeSlice } from "../../features/Transactions/TransSlice";
+import { fetchClients } from "../../features/Clinets/ClinetsSlice";
+
 
 export default function Deposite({selectedClientID}: { selectedClientID: number }) {
   const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
   const Client = useAppSelector((state) => state.clients.client);
+
+
 
 
 
@@ -27,6 +32,11 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
   const handleClose = () => {
     setOpen(false);
   };
+
+
+
+
+
 
 
 
@@ -49,8 +59,11 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
               amount: Number(formJson.amount),
               userId: 1, // TODO: Get actual userId from auth
             };
+            dispatch(DepositeSlice(depositRequest));
+            dispatch(fetchClients());
             console.log(depositRequest);
             handleClose();
+
           },
         }}
       >

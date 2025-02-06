@@ -13,11 +13,15 @@ import Avatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
 import SendIcon from '@mui/icons-material/Send';
 import CallReceivedIcon from '@mui/icons-material/CallReceived';
+import { TransFerSclie } from "../../features/Transactions/TransSlice";
 
 export default function Transfer({
   selectedClientID,
+  
 }: {
   selectedClientID: number;
+  
+
 
 }) {
   const [open, setOpen] = React.useState(false);
@@ -33,7 +37,11 @@ export default function Transfer({
 
   const handleClose = () => {
     setOpen(false);
+    
   };
+
+
+  
 
   return (
     <React.Fragment>
@@ -53,8 +61,11 @@ export default function Transfer({
               fromClientId: selectedClientID,
               toClientId: Number(formJson.toClientId),
               amount: Number(formJson.amount),
+              
               userId: 1 // TODO: Get actual userId from auth
             };
+
+            dispatch(TransFerSclie(transferRequest));
             console.log(transferRequest);
             handleClose();
           },

@@ -59,7 +59,11 @@ namespace BankSalemDataAccessLayer
 
                 rowsAffected = command.ExecuteNonQuery();
             }
-            catch { }
+                catch (Exception ex)
+                {
+                        Console.WriteLine(ex.Message);      
+                }
+
             finally
             {
                 connection.Close();
@@ -115,11 +119,15 @@ namespace BankSalemDataAccessLayer
 
                 rowsAffected = command.ExecuteNonQuery();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             finally
             {
                 connection.Close();
             }
+
 
             return (rowsAffected > 0);
         }
@@ -145,11 +153,15 @@ namespace BankSalemDataAccessLayer
                     TransActionTable.Load(reader);
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             finally
             {
                 connection.Close();
             }
+
 
             return TransActionTable;
         }

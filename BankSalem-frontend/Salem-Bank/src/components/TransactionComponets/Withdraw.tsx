@@ -11,11 +11,14 @@ import { fetchClients } from "../../features/Clinets/ClinetsSlice";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Avatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
+import { WithDrawSlice } from "../../features/Transactions/TransSlice";
 
 export default function Withdraw({
   selectedClientID,
+  
 }: {
   selectedClientID: number;
+  
 
 }) {
   const [open, setOpen] = React.useState(false);
@@ -31,6 +34,7 @@ export default function Withdraw({
 
   const handleClose = () => {
     setOpen(false);
+    
   };
 
   return (
@@ -52,6 +56,7 @@ export default function Withdraw({
               amount: Number(formJson.amount),
               userId: 1 // TODO: Get actual userId from auth
             };
+            dispatch(WithDrawSlice(withdrawRequest));
             console.log(withdrawRequest);
             handleClose();
           },

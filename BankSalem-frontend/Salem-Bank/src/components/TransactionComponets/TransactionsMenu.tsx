@@ -10,6 +10,8 @@ export default function TransactionsMenu({selectedClientID}: { selectedClientID 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+
+
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -43,13 +45,15 @@ export default function TransactionsMenu({selectedClientID}: { selectedClientID 
           horizontal: "left",
         }}
       >
-        <MenuItem>
-          <Deposite selectedClientID={selectedClientID} />
+        <MenuItem >
+          <Deposite  selectedClientID={selectedClientID} />  
         </MenuItem>
 
-        <MenuItem > <Withdraw selectedClientID={selectedClientID} /> </MenuItem>
-        <MenuItem ><Transfer selectedClientID={selectedClientID} /></MenuItem>
+
+        <MenuItem > <Withdraw  selectedClientID={selectedClientID} /> </MenuItem>
+        <MenuItem ><Transfer  selectedClientID={selectedClientID} /></MenuItem>
       </Menu>
     </div>
+
   );
 }

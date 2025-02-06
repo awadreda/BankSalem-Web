@@ -75,7 +75,7 @@ namespace BankWepAPI.Controllers
             }
 
             var client = ClientsBusiness.FindClient(request.ClientId);
-            bool success = client.Deposite(request.Amount, request.ClientId);
+            bool success = client.Deposite(request.Amount, request.UserId);
 
             if (success)
             {
@@ -104,7 +104,7 @@ namespace BankWepAPI.Controllers
             }
 
             var client = ClientsBusiness.FindClient(request.ClientId);
-            bool success = client.WithDraw(request.Amount, request.ClientId);
+            bool success = client.WithDraw(request.Amount, request.UserId);
 
             if (success)
             {
