@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "byKMnAXCb0D4GLFaD9n8xSKL07Nq0p7+qCb9pp/5+ldOP9MgjDAEmYOEkXc6YDMDs7Zxv5yR9eBCiGl0U/EjCA==",
+  "dgSpecHash": "1JKyeybkSR1a2GDEdAyfYURlFgv4lozCSf354SB07zOXswXSclUcU+wzBC3X4Hr/diSRbdNCgzQIzllA4xVeNA==",
   "success": true,
-  "projectFilePath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj",
+  "projectFilePath": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankbusinessLayer\\BankbusinessLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

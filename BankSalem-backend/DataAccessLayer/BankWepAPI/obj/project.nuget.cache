@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zNAcwVC8yXIBa7626ZEUKsTAA2WOS97WLh2aXnkpM3fKig39rLCbXSDHeIFp0bExiD0CCyHY28GiOkAMBnfsew==",
+  "dgSpecHash": "FwlHWltkhy2CWxTL0Lzat47e1vhHFl0jt1lLEKw+lQze4rTetjrDV8pA1tUHROCvw9KvIVvKLK/2fSkIgv91xg==",
   "success": true,
-  "projectFilePath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj",
+  "projectFilePath": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

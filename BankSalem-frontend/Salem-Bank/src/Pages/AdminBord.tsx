@@ -27,10 +27,15 @@ import AddIcon from "@mui/icons-material/Add";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { getAllUsers } from "../features/Users/UsersSlice";
 import AddUser from "../components/UsersComponets/AddUser";
+import EditUser from "../components/UsersComponets/EditUser";
+import DeleteUser from "../components/UsersComponets/DeleteUser";
+import ShowUserProfile from "../components/UsersComponets/ShowUserProfile";
 
 export default function AdminBord() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const dispatch = useAppDispatch();
   const stateUsers = useAppSelector((state) => state.users);
@@ -88,11 +93,22 @@ export default function AdminBord() {
       default:
         return "User";
     }
+  };  
+
+  const handleRowClick = (event: React.MouseEvent<HTMLElement>, userId: number) => {
+    setAnchorEl(event.currentTarget);
+    setSelectedUserId(userId);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setSelectedUserId(null);
   };
 
   const handleEdit = (userId: number) => {
     console.log("Edit user:", userId);
   };
+
 
   const handleDelete = (userId: number) => {
     console.log("Delete user:", userId);
@@ -249,6 +265,7 @@ export default function AdminBord() {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((user) => (
                     <TableRow
+                      onClick={(event) => handleRowClick(event, user.user_ID)}
                       hover
                       key={user.user_ID}
                       sx={{
@@ -262,18 +279,11 @@ export default function AdminBord() {
                       {!isMobile && <TableCell>{user.email}</TableCell>}
                       {!isMobile && <TableCell>{user.phone}</TableCell>}
                       <TableCell>
-                        <IconButton
-                          onClick={() => handleEdit(user.user_ID)}
-                          color="primary"
-                        >
-                          <EditIcon />
-                        </IconButton>
-                        <IconButton
-                          onClick={() => handleDelete(user.user_ID)}
-                          color="error"
-                        >
-                          <DeleteIcon />
-                        </IconButton>
+
+                        <ShowUserProfile selectedUserId={user.user_ID} />
+                        <EditUser userId={user.user_ID} onClose={() => {}} />
+                       
+                        <DeleteUser userId={user.user_ID} onClose={() => {}} />
                       </TableCell>
                     </TableRow>
                   ))}
@@ -290,12 +300,19 @@ export default function AdminBord() {
           onRowsPerPageChange={handleChangeRowsPerPage}
           sx={{ bgcolor: "#F8FAFC" }}
         />
+        
       </Paper>
 
-      <Box sx={{ display: "flex", justifyContent: "center", mb: 2 ,marginTop: "20px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mb: 2,
+          marginTop: "20px",
+        }}
+      >
         <AddUser />
       </Box>
     </div>
-
   );
 }
