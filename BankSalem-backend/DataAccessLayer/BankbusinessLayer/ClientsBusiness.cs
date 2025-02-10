@@ -301,22 +301,22 @@ namespace BankbusinessLayer
             switch (Mode)
             {
                 case enMode.AddNew:
-                {
-                    if (_AddNewClient())
                     {
-                        Mode = enMode.Update;
+                        if (_AddNewClient())
+                        {
+                            Mode = enMode.Update;
 
-                        return true;
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
-                    else
-                    {
-                        return false;
-                    }
-                }
                 case enMode.Update:
-                {
-                    return _UpdateClinet();
-                }
+                    {
+                        return _UpdateClinet();
+                    }
             }
             return false;
         }
@@ -430,6 +430,11 @@ namespace BankbusinessLayer
         public static DataTable TransActionList()
         {
             return TransActionData.GetAllTransAction();
+        }
+        
+        public static DataTable GetClientTransAction(int clientID)
+        {
+            return TransActionData.GetClientTransAction(clientID);
         }
     }
 }

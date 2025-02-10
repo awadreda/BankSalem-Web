@@ -41,7 +41,7 @@ import { User } from "../Types/types";
     export const createUserApi = async (user: User) => {
       try {
         const response = await api.post("/UserControllers", user);
-
+        console.log("response.data from createUserApi : ", response.data);
         return response.data;
       } catch (error) {
         console.error("Error creating user:", error);

@@ -9,9 +9,9 @@ namespace BankbusinessLayer.DTOs
     {
         public int LogID { get; set; }
         public int UserID { get; set; }
-        public string UserName { get; set; }
+        public required string UserName { get; set; }
         public int LogTypeID { get; set; }
-        public string LogeTypeName { get; set; }
+        public required string LogeTypeName { get; set; }
         public DateTime? LogTime { get; set; } 
     }
 }

@@ -51,6 +51,7 @@ export const createUser = createAsyncThunk(
   "users/createUser",
   async (user: User) => {
     const response = await createUserApi(user);
+    console.log("response.data from createUser Slice : ", response);
     return response;
   }
 );

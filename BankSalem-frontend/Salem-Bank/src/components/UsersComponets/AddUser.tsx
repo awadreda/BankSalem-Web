@@ -34,13 +34,25 @@ export default function AddUser() {
   const handleClose = () => {
     setOpen(false);
   };
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setUser((prevUser: User) => ({
-      ...prevUser,
-      [name]: value,
-    }));
+    
+    if (name === 'permission') {
+      const numValue = parseInt(value);
+      if (isNaN(numValue) || numValue < 1 || numValue > 3) {
+        // Only allow valid numbers between 1-3 for permission
+        return;
+      }
+      setUser((prevUser: User) => ({
+        ...prevUser,
+        [name]: numValue,
+      }));
+    } else {
+      setUser((prevUser: User) => ({
+        ...prevUser,
+        [name]: value,
+      }));
+    }
   };
 
   const handleAddUserButton = () => {
@@ -135,7 +147,7 @@ export default function AddUser() {
             label="Username"
             name="userName"
             value={user.userName}
-            onChange={handleChange}
+            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
             fullWidth
             margin="normal"
             required
@@ -145,7 +157,7 @@ export default function AddUser() {
             name="password"
             type="password"
             value={user.password}
-            onChange={handleChange}
+            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
             fullWidth
             margin="normal"
             required
@@ -155,10 +167,12 @@ export default function AddUser() {
             label="Permission Level"
             name="permission"
             value={user.permission}
-            onChange={handleChange}
+            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
             fullWidth
             margin="normal"
             required
+
+
           >
             <MenuItem value={0}>User</MenuItem>
             <MenuItem value={1}>Admin</MenuItem>
@@ -168,7 +182,7 @@ export default function AddUser() {
             label="First Name"
             name="firstName"
             value={user.firstName}
-            onChange={handleChange}
+            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
             fullWidth
             margin="normal"
           />
@@ -176,7 +190,7 @@ export default function AddUser() {
             label="Last Name"
             name="lastName"
             value={user.lastName}
-            onChange={handleChange}
+            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
             fullWidth
             margin="normal"
           />
@@ -185,7 +199,7 @@ export default function AddUser() {
             name="email"
             type="email"
             value={user.email}
-            onChange={handleChange}
+            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
             fullWidth
             margin="normal"
           />
@@ -193,7 +207,7 @@ export default function AddUser() {
             label="Phone"
             name="phone"
             value={user.phone}
-            onChange={handleChange}
+            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
             fullWidth
             margin="normal"
           />

@@ -104,5 +104,42 @@ namespace BankSalemDataAccessLayer
 
             return (logid == 1);
         }
+
+
+        public static DataTable GetUserLogRegister(int userID)
+        {
+            DataTable dataTable = new DataTable();
+            SqlConnection connection = new SqlConnection(DataConnectionSettings.ConnectionString);
+
+            string query = @"SELECT * from [myBankDb].dbo.LogRegisterListView WHERE UserID = @UserID;";
+              
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", userID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dataTable.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dataTable;
+            
+      
+
+         }
+
     }
 }

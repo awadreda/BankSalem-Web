@@ -59,10 +59,10 @@ namespace BankSalemDataAccessLayer
 
                 rowsAffected = command.ExecuteNonQuery();
             }
-                catch (Exception ex)
-                {
-                        Console.WriteLine(ex.Message);      
-                }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             finally
             {
@@ -71,6 +71,10 @@ namespace BankSalemDataAccessLayer
 
             return (rowsAffected > 0);
         }
+
+
+
+
 
         public static bool SaveTransfer(
             int UserID,
@@ -132,6 +136,8 @@ namespace BankSalemDataAccessLayer
             return (rowsAffected > 0);
         }
 
+
+
         public static DataTable GetAllTransAction()
         {
             DataTable TransActionTable = new DataTable();
@@ -165,5 +171,47 @@ namespace BankSalemDataAccessLayer
 
             return TransActionTable;
         }
+
+
+
+        public static DataTable GetClientTransAction(int clientID)
+        {
+            DataTable TransActionTable = new DataTable();
+
+            SqlConnection connection = new SqlConnection(DataConnectionSettings.ConnectionString);
+        
+            string query = @"SELECT  *
+       FROM [myBankDb].[dbo].[TransActionLIstView]
+      WHERE ClientID = @ClientID;";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@ClientID", clientID);
+
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(); 
+                if (reader.HasRows)
+                {
+                    TransActionTable.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return TransActionTable;
+       }
+
+
     }
+    
+
+    
 }

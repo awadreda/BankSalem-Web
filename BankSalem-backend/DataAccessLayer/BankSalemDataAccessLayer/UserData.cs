@@ -40,12 +40,12 @@ namespace BankSalemDataAccessLayer
                 {
                     UserID = Convert.ToInt32(reader["UserID"]);
                     PersonID = Convert.ToInt32(reader["PersonID"]);
-                    UserName = reader["UserName"].ToString();
-                    FirstName = reader["FirstName"].ToString();
-                    LastName = reader["LastName"].ToString();
-                    Email = reader["Email"].ToString();
-                    Phone = reader["Phone"].ToString();
-                    PassWord = reader["PassWord"].ToString();
+                    UserName = reader["UserName"]?.ToString() ?? string.Empty;
+                    FirstName = reader["FirstName"]?.ToString() ?? string.Empty;
+                    LastName = reader["LastName"]?.ToString() ?? string.Empty;
+                    Email = reader["Email"]?.ToString() ?? string.Empty;
+                    Phone = reader["Phone"]?.ToString() ?? string.Empty;
+                    PassWord = reader["PassWord"]?.ToString() ?? string.Empty;
                     Permission = Convert.ToInt32(reader["Permission"]);
                 }
                 reader.Close();
@@ -93,12 +93,13 @@ namespace BankSalemDataAccessLayer
                     isFound = true;
                     UserID = Convert.ToInt32(reader["UserID"]);
                     PersonID = Convert.ToInt32(reader["PersonID"]);
-                    UserName = reader["UserName"].ToString();
-                    FirstName = reader["FirstName"].ToString();
-                    LastName = reader["LastName"].ToString();
-                    Email = reader["Email"].ToString();
-                    Phone = reader["Phone"].ToString();
-                    PassWord = reader["PassWord"].ToString();
+                    UserName = reader["UserName"]?.ToString() ?? string.Empty;
+                    FirstName = reader["FirstName"]?.ToString() ?? string.Empty;
+                    LastName = reader["LastName"]?.ToString() ?? string.Empty;
+                    Email = reader["Email"]?.ToString() ?? string.Empty;
+                    Phone = reader["Phone"]?.ToString() ?? string.Empty;
+                    PassWord = reader["PassWord"]?.ToString() ?? string.Empty;
+
                     Permission = Convert.ToInt32(reader["Permission"]);
                 }
                 reader.Close();
@@ -107,7 +108,7 @@ namespace BankSalemDataAccessLayer
             {
                 isFound = false;
                 // Handle exceptions
-                //Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
@@ -152,12 +153,13 @@ namespace BankSalemDataAccessLayer
                     isFound = true;
                     UserID = Convert.ToInt32(reader["UserID"]);
                     PersonID = Convert.ToInt32(reader["PersonID"]);
-                    UserName = reader["UserName"].ToString();
-                    FirstName = reader["FirstName"].ToString();
-                    LastName = reader["LastName"].ToString();
-                    Email = reader["Email"].ToString();
-                    Phone = reader["Phone"].ToString();
-                    PassWord = reader["PassWord"].ToString();
+                    UserName = reader["UserName"]?.ToString() ?? string.Empty;
+                    FirstName = reader["FirstName"]?.ToString() ?? string.Empty;
+                    LastName = reader["LastName"]?.ToString() ?? string.Empty;
+                    Email = reader["Email"]?.ToString() ?? string.Empty;
+                    Phone = reader["Phone"]?.ToString() ?? string.Empty;
+                    PassWord = reader["PassWord"]?.ToString() ?? string.Empty;
+
                     Permission = Convert.ToInt32(reader["Permission"]);
                 }
                 reader.Close();
@@ -166,7 +168,7 @@ namespace BankSalemDataAccessLayer
             {
                 isFound = false;
                 // Handle exceptions
-                //Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {
@@ -250,9 +252,9 @@ namespace BankSalemDataAccessLayer
                     PersonID = indexID_ForPerson;
                 }
 
-                string i =
-                    "INSERT INTO [dbo].[Users] ([PersonID], [UserName], [PassWord], [Permission]) "
-                    + "VALUES (@FirstName, @LastName, @Email, @Phone)";
+                // string i =
+                //     "INSERT INTO [dbo].[Users] ([PersonID], [UserName], [PassWord], [Permission]) "
+                //     + "VALUES (@FirstName, @LastName, @Email, @Phone)";
 
                 string QueryForUser =
                     @"INSERT INTO [dbo].[Users] ([PersonID], [UserName], [PassWord], [Permission]) 

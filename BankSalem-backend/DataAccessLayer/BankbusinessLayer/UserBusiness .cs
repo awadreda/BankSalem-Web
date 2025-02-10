@@ -114,7 +114,7 @@ namespace BankbusinessLayer
             }
         }
 
-        public static UserBussinees FindUserNameAndPassword(string UserName, string Password)
+        public static UserBussinees? FindUserNameAndPassword(string UserName, string Password)
         {
             int UserID = -1;
             int PersonID = -1;
@@ -194,18 +194,18 @@ namespace BankbusinessLayer
             switch (Mode)
             {
                 case enMode.Addnew:
-                {
-                    if (_AddNewUser())
                     {
-                        Mode = enMode.Update;
-                        return true;
+                        if (_AddNewUser())
+                        {
+                            Mode = enMode.Update;
+                            return true;
+                        }
+                        return false;
                     }
-                    return false;
-                }
                 case enMode.Update:
-                {
-                    return _UpdateUser();
-                }
+                    {
+                        return _UpdateUser();
+                    }
             }
             return false;
         }
@@ -259,7 +259,8 @@ namespace BankbusinessLayer
             return LogRegisterDb.IsLogedIn(ref userid);
         }
 
-        public static UserBussinees FillUserLogedIN()
+
+        public static UserBussinees? FillUserLogedIN()
         {
             int userid = -1;
             if (LogRegisterDb.IsLogedIn(ref userid))
@@ -270,6 +271,11 @@ namespace BankbusinessLayer
             {
                 return null;
             }
+        }
+        
+        public static DataTable GetUserLogRegister(int userID)
+        {
+            return LogRegisterDb.GetUserLogRegister(userID);
         }
     }
 }
