@@ -5,48 +5,32 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Client } from "../../Types/types";
-import {  fetchClients, FindClientByIdClientSlice, UpdateClientSlice } from "../../features/Clinets/ClinetsSlice";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { Client } from "../../../Types/types";
+import {
+  fetchClients,
+  FindClientByIdClientSlice,
+  UpdateClientSlice,
+} from "../../../features/Clinets/ClinetsSlice";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { useEffect, useState } from "react";
-import { IconButton, useMediaQuery, useTheme } from "@mui/material";
+import { IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
-export default function EditFromCLientTable({ClientId,onClose }: {ClientId:number,onClose:()=>void}) {
+export default function EditFromCLientTableIConForMobile({
+  ClientId,
+}: {
+  ClientId: number;
+}) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = React.useState(false);
   const ClientData = useAppSelector((state) => state.clients.client);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Added isMobile variable
-  const isTablet = useMediaQuery(theme.breakpoints.down("md")); // Added isTablet variable
 
-  // const [client, setClient] = React.useState<Client>({
-  //   id: 5,
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   phone: "",
-  //   accountNumber: "",
-  //   pincode: "",
-  //   accountBalance: 0,
-  // });
-
-  const [client, setClient] = useState<Client>({
-    id: 0,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    accountNumber: "",
-    pincode: "",
-    accountBalance: 0,
-  });
+  const [client, setClient] = useState<Client>(ClientData as Client);
 
   const handleClickOpen = () => {
-    dispatch(FindClientByIdClientSlice(ClientId))
-    // setClient(ClientData as Client);
+    dispatch(FindClientByIdClientSlice(ClientId));
+
     setOpen(true);
-    
   };
 
   const handleClose = () => {
@@ -68,33 +52,22 @@ export default function EditFromCLientTable({ClientId,onClose }: {ClientId:numbe
     });
   };
 
-    useEffect(() => {
-      if (open && ClientData) {
-
-          setClient(ClientData);
-
-      }
-      console.log("From the component edit ", ClientData);
-    }, [ClientData,open]);
+  useEffect(() => {
+    if (open && ClientData) {
+      setClient(ClientData);
+    }
+    console.log("From the component edit ixon useEffect ", ClientData);
+  }, [ClientData, open]);
 
   return (
     <React.Fragment>
-      {isMobile || isTablet ? (
-        <IconButton onClick={ () => {
-          
-          }
-          }>
-          <EditIcon onClick={handleClickOpen} />
-        </IconButton>
-      ) : (
-        <Button
-          variant="contained"
-          sx={{ padding: "6px 8px", fontWeight: "bold" }}
-          onClick={handleClickOpen}
-        >
-          Edit Client
-        </Button>
-      )}
+      <IconButton
+        onClick={() => {
+          handleClickOpen();
+        }}
+      >
+        <EditIcon />
+      </IconButton>
 
       <Dialog
         open={open}
@@ -107,6 +80,7 @@ export default function EditFromCLientTable({ClientId,onClose }: {ClientId:numbe
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const formJson = Object.fromEntries((formData as any).entries());
             const email = formJson.email;
+            console.log("fromSumbet : ", email);
             console.log(email);
             handleClose();
           },
@@ -176,7 +150,6 @@ export default function EditFromCLientTable({ClientId,onClose }: {ClientId:numbe
           <Button
             color="error"
             onClick={() => {
-              onClose();
               handleClose();
             }}
           >
@@ -185,7 +158,6 @@ export default function EditFromCLientTable({ClientId,onClose }: {ClientId:numbe
           <Button
             onClick={() => {
               handleAddClientButton();
-              onClose();
             }}
             variant="contained"
             sx={{ fontWeight: "bold" }}

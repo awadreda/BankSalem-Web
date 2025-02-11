@@ -15,11 +15,15 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { useAppSelector } from "../../hooks";
 import TransactionsMenu from "../TransactionComponets/TransactionsMenu";
 import DeleteClinTableMenue from "./DeleteClinTableMenue";
+import IconButton from "@mui/material/IconButton";
+import InfoIcon from "@mui/icons-material/Info";
 
 export default function ShowClientCard({ selectedClientID }: { selectedClientID: number }) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Added isMobile variable
+  const isTablet = useMediaQuery(theme.breakpoints.down("md")); // Added isTablet variable
   
   const Client = useAppSelector((state) =>
     state.clients.clients.find((client) => client.id === selectedClientID)
@@ -35,9 +39,17 @@ export default function ShowClientCard({ selectedClientID }: { selectedClientID:
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        View Details
-      </Button>
+      {isMobile || isTablet ? (
+        <IconButton onClick={handleClickOpen}>
+            <InfoIcon />
+          </IconButton>
+      ) : (
+        <Button variant="outlined" onClick={handleClickOpen}>
+          View Details
+        </Button>
+      )}
+    
+    
       <Dialog
         fullScreen={fullScreen}
         open={open}

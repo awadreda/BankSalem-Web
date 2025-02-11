@@ -71,7 +71,7 @@ export default function AdminBord() {
         superAdmins: users.filter((user) => user.permission === 2).length,
       });
     }
-  }, [users]);
+  }, [  ]);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);

@@ -2,9 +2,8 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ToolpadDialogsNoSnap from "./DeleteClinTableMenue";
 
-export default function PositionedMenu() {
+export default function CardMenueActions() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -42,8 +41,7 @@ export default function PositionedMenu() {
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        {/* <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-        <ToolpadDialogsNoSnap ClientID={1} onClose={handleClose} />
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
     </div>
   );

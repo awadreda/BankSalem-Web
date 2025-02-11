@@ -1,5 +1,5 @@
-import ClientsTable from "../components/ClientsComponets/ClientsTable";
-import TransList from "../components/TransactionComponets/TransList";
+// import ClientsTable from "../components/ClientsComponets/ClientsTable";
+// import TransList from "../components/TransactionComponets/TransList";
 
 export default function Dashboard() {
   return (
@@ -10,8 +10,8 @@ export default function Dashboard() {
 
 
 
-        <ClientsTable />
-        <TransList />
+        {/* <ClientsTable /> */}
+        {/* <TransList /> */}
       </div>
     </>
   );

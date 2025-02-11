@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -14,6 +14,9 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import PeopleIcon from '@mui/icons-material/People';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const drawerWidth = 240;
 
@@ -29,61 +32,101 @@ const menuItems = [
 
 export default function SideBar() {
   const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width:950px)');
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <Box sx={{ overflow: 'auto', mt: 8 }}>
+      <List>
+        {menuItems.map((item) => (
+          <ListItem key={item.text} disablePadding>
+            <ListItemButton
+              component={Link}
+              to={item.path}
+              selected={location.pathname === item.path}
+              onClick={isMobile ? handleDrawerToggle : undefined}
+              sx={{
+                '&.Mui-selected': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                  },
+                },
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                },
+                margin: '4px 8px',
+                borderRadius: '8px',
+                padding: '8px 16px',
+              }}
+            >
+              <ListItemIcon sx={{ color: 'white', minWidth: 40 }}>
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText 
+                primary={item.text}
+                sx={{
+                  '& .MuiListItemText-primary': {
+                    fontSize: '0.9rem',
+                    fontWeight: location.pathname === item.path ? 600 : 400,
+                  },
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
 
   return (
-    <Drawer
-      variant="permanent"
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        '& .MuiDrawer-paper': {
+    <>
+      {isMobile && (
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          sx={{ 
+            mr: 2, 
+            display: { sm: 'block' },
+            position: 'fixed',
+            top: '1rem',
+            left: '1rem',
+            zIndex: 1200,
+            backgroundColor: '#1a237e',
+            '&:hover': {
+              backgroundColor: '#2a337e'
+            }
+          }}
+        >
+          <MenuIcon sx={{ color: 'white' }} />
+        </IconButton>
+      )}
+      <Drawer
+        variant={isMobile ? 'temporary' : 'permanent'}
+        open={isMobile ? mobileOpen : true}
+        onClose={isMobile ? handleDrawerToggle : undefined}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx={{
           width: drawerWidth,
-          boxSizing: 'border-box',
-          backgroundColor: '#1a237e',
-          color: 'white',
-        },
-      }}
-    >
-      <Box sx={{ overflow: 'auto', mt: 8 }}>
-        <List>
-          {menuItems.map((item) => (
-            <ListItem key={item.text} disablePadding>
-              <ListItemButton
-                component={Link}
-                to={item.path}
-                selected={location.pathname === item.path}
-                sx={{
-                  '&.Mui-selected': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    },
-                  },
-                  '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  },
-                  margin: '4px 8px',
-                  borderRadius: '8px',
-                  padding: '8px 16px',
-                }}
-              >
-                <ListItemIcon sx={{ color: 'white', minWidth: 40 }}>
-                  {item.icon}
-                </ListItemIcon>
-                <ListItemText 
-                  primary={item.text}
-                  sx={{
-                    '& .MuiListItemText-primary': {
-                      fontSize: '0.9rem',
-                      fontWeight: location.pathname === item.path ? 600 : 400,
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-    </Drawer>
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+            backgroundColor: '#1a237e',
+            color: 'white',
+          },
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </>
   );
 }

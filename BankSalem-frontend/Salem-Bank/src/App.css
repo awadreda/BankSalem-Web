@@ -40,3 +40,63 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Add smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(59, 130, 246);
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(37, 99, 235);
+}
+
+/* Firefox scrollbar styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(59, 130, 246) #e2e8f0;
+  scroll-behavior: smooth;
+}
+
+/* Table specific scrollbar styles */
+.MuiTableContainer-root {
+  scroll-behavior: smooth;
+}
+
+.MuiTableContainer-root::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.MuiTableContainer-root::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+.MuiTableContainer-root::-webkit-scrollbar-thumb {
+  background: rgb(59, 130, 246);
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.MuiTableContainer-root::-webkit-scrollbar-thumb:hover {
+  background: rgb(37, 99, 235);
+}

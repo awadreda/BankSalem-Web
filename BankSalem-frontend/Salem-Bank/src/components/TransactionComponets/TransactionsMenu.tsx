@@ -5,12 +5,15 @@ import MenuItem from '@mui/material/MenuItem';
 import Deposite from './Deposite';
 import Withdraw from './Withdraw';
 import Transfer from './Transfer';
+import { IconButton, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import TransactionIcon from "@mui/icons-material/AccountBalance";
 
 export default function TransactionsMenu({selectedClientID}: { selectedClientID :number}) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-
+    
 
     setAnchorEl(event.currentTarget);
   };
@@ -18,17 +21,31 @@ export default function TransactionsMenu({selectedClientID}: { selectedClientID 
     setAnchorEl(null);
   };
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <div>
-      <Button
-        id="demo-positioned-button"
-        aria-controls={open ? "demo-positioned-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-      >
-        Transactions
-      </Button>
+      {isMobile || isTablet ? (
+        <IconButton
+          sx={{ color: "#FBBF24", "&:hover": { backgroundColor: "#FFFBEB" } }}
+          onClick={handleClick}
+        >
+          <TransactionIcon />
+        </IconButton>
+      ) : (
+        <Button
+          id="demo-positioned-button"
+          aria-controls={open ? "demo-positioned-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+        >
+          Transactions
+        </Button>
+      )}
+
       <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
@@ -45,15 +62,18 @@ export default function TransactionsMenu({selectedClientID}: { selectedClientID 
           horizontal: "left",
         }}
       >
-        <MenuItem >
-          <Deposite  selectedClientID={selectedClientID} />  
+        <MenuItem>
+          <Deposite selectedClientID={selectedClientID} />
         </MenuItem>
 
-
-        <MenuItem > <Withdraw  selectedClientID={selectedClientID} /> </MenuItem>
-        <MenuItem ><Transfer  selectedClientID={selectedClientID} /></MenuItem>
+        <MenuItem>
+          {" "}
+          <Withdraw selectedClientID={selectedClientID} />{" "}
+        </MenuItem>
+        <MenuItem>
+          <Transfer selectedClientID={selectedClientID} />
+        </MenuItem>
       </Menu>
     </div>
-
   );
 }

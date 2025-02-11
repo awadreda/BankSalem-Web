@@ -7,6 +7,9 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useAppDispatch } from "../../hooks";
 import { DeleteClientSliceFuction, fetchClients } from "../../features/Clinets/ClinetsSlice";
+import { useTheme } from "@mui/material/styles";
+import { IconButton, useMediaQuery } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function DeleteClinTableMenue({
   ClientID,
@@ -17,6 +20,11 @@ export default function DeleteClinTableMenue({
 }) {
   const [open, setOpen] = React.useState(false);
   const dispatch= useAppDispatch();
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); 
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
 
   const handleDelete = () => {
     dispatch(DeleteClientSliceFuction(ClientID)).then(() => {
@@ -34,15 +42,25 @@ export default function DeleteClinTableMenue({
 
   return (
     <React.Fragment>
-      <Button
-        variant="text"
-        color="error"
-        onClick={() => {
-          handleClickOpen();
-        }}
+    
+      {isMobile || isTablet ? (
+        <IconButton
+          sx={{ color: "#DC2626", "&:hover": { backgroundColor: "#FEF2F2" } }}
+        >
+          <DeleteIcon />  
+        </IconButton>
+      ) : (
+        <Button
+          variant="text"
+          color="error"
+          onClick={() => {
+            handleClickOpen();
+          }}
       >
         Delete
       </Button>
+      )}
+      
       <Dialog
         open={open}
         onClose={handleClose}
