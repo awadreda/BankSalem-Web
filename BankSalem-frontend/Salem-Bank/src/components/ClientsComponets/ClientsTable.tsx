@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchClients } from "../../features/Clinets/ClinetsSlice";
 import AddClient from "./AddClient";
@@ -74,7 +74,13 @@ export default function ClientsTable() {
 
   const ClientsAPI = useAppSelector((state) => state.clients);
 
-  let clients = ClientsAPI.clients;
+  let clients =  useMemo(() => ClientsAPI.clients, [ClientsAPI.clients]);
+
+  const momoizedCLientCard = useMemo(() => {
+    return clients.map((client) => (
+      <ClientCard key={client.id} client={client} />
+    ));
+  }, [clients]);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -155,9 +161,7 @@ export default function ClientsTable() {
 
       {isMobile || isTablet ? (
         <div style={{ maxHeight: "600px", overflowY: "auto" }}>
-          {clients.map((client) => (
-            <ClientCard key={client.id} client={client} />
-          ))}
+          {momoizedCLientCard}
         </div>
       ) : (
         <>

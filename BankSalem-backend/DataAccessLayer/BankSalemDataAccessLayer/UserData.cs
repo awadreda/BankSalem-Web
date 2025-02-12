@@ -371,8 +371,8 @@ namespace BankSalemDataAccessLayer
 
             SqlConnection connection = new SqlConnection(DataConnectionSettings.ConnectionString);
 
-            string quary =
-                "DELETE FROM Users WHERE Users.UserID=@ID;"
+            string quary = "DELETE FROM LogRegister WHERE UserID = @ID;"
+                + "DELETE FROM Users WHERE Users.UserID=@ID;"
                 + " delete from Persons where PersonID not in (select Clients.PersonID from Clients) and PersonID not in (select Users.PersonID from Users);";
 
             SqlCommand command = new SqlCommand(quary, connection);
@@ -383,7 +383,10 @@ namespace BankSalemDataAccessLayer
                 connection.Open();
                 rowsAffected = command.ExecuteNonQuery();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
             finally
             {
                 connection.Close();

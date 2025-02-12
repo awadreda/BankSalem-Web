@@ -5,10 +5,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { deleteUser, getAllUsers } from "../../features/Users/UsersSlice";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton } from "@mui/material";
+
 
 export default function DeleteUser({
   userId,
@@ -18,10 +19,13 @@ export default function DeleteUser({
   onClose: () => void;
 }) {
   const [open, setOpen] = React.useState(false);
+  const stateUser = useAppSelector((state) => state.users);
   const dispatch = useAppDispatch();
 
   const handleDelete = () => {
+    console.log("userId from deleteUser : ", userId);
     dispatch(deleteUser(userId)).then(() => {
+      console.log("stateUser from deleteUser : ", stateUser);
       dispatch(getAllUsers());
     });
   };
@@ -70,9 +74,9 @@ export default function DeleteUser({
           </Button>
           <Button
             onClick={() => {
+              handleDelete();
               handleClose();
               onClose();
-              handleDelete();
             }}
             color="error"
           >

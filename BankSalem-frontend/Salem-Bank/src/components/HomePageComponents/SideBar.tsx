@@ -95,7 +95,7 @@ export default function SideBar() {
             mr: 2, 
             display: { sm: 'block' },
             position: 'fixed',
-            top: '1rem',
+            top: '1.5rem',
             left: '1rem',
             zIndex: 1200,
             backgroundColor: '#1a237e',

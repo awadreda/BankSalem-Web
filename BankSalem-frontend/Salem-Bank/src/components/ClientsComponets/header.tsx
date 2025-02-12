@@ -1,3 +1,5 @@
+import SideBar from "../HomePageComponents/SideBar";
+
 export default function header() {
   return (
     <div
@@ -20,7 +22,8 @@ export default function header() {
           fontSize: "40px",
         }}
       >
-        Salem Bank{" "}
+        
+        Salem Bank
       </h2>
     </div>
   );

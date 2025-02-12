@@ -110,9 +110,12 @@ namespace BankWepAPI.Controllers
 
             if (UserBussinees.IsUserExist(userID))
             {
-                UserBussinees.DeleteUserbyID(userID);
+                if (UserBussinees.DeleteUserbyID(userID))
+                {
+                    return Ok($"User with id {userID} has been deleted");
+                }
 
-                return Ok($"User with id {userID} has been deleted");
+                return BadRequest($"User with id {userID} has not been deleted");
             }
 
             return NotFound($"User with id {userID} not found   ");

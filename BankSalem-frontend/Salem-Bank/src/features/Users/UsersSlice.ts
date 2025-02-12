@@ -70,6 +70,7 @@ export const deleteUser = createAsyncThunk(
   "users/deleteUser",
   async (id: number) => {
       const response = await deleteUserApi(id);
+      console.log("response.data from deleteUser Slice : ", response);
     return response;
   }
 );

@@ -64,7 +64,7 @@ import { User } from "../Types/types";
     export const deleteUserApi = async (id: number) => {
       try {
         const response = await api.delete(`/UserControllers/${id}`);
-
+        console.log("response.data from deleteUserApi : ", response);
 
         return response.data;
       } catch (error) {
