@@ -10,20 +10,19 @@ import {
   Typography,
   Grid,
   Card,
-  CardContent
+  CardContent,
+  IconButton,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
-
-interface Transaction {
-  id: number;
-  type: 'deposit' | 'withdrawal' | 'transfer';
-  amount: number;
-  fromAccount?: number;
-  toAccount?: number;
-  date: string;
-}
+import { useAppSelector } from '../hooks';
+import { useAppDispatch } from '../hooks';
+import { Transaction } from '../Types/types';
+import { fetchTransactionsSlice } from '../features/Transactions/TransSlice';
+import ShowTransactionCard from '../components/TransactionsComponent/ShowTransactions'; // Import the ShowTransactionCard component
 
 export default function TransactionsBord() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -33,40 +32,25 @@ export default function TransactionsBord() {
     totalTransfers: 0
   });
 
+  const state = useAppSelector((state) => state.Transactions);
+  const dispatch = useAppDispatch();
+ const theme = useTheme();
+ const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+//  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const TransactionsItems = state.transactions;
+  console.log("TransactionsItems from TransactionsBord : ", TransactionsItems);
+  
   useEffect(() => {
     // Fetch transactions from API
-    // This is a mock implementation
-    const mockTransactions: Transaction[] = [
-      {
-        id: 1,
-        type: 'deposit',
-        amount: 1000,
-        toAccount: 123456,
-        date: '2024-01-15'
-      },
-      {
-        id: 2,
-        type: 'withdrawal',
-        amount: 500,
-        fromAccount: 123456,
-        date: '2024-01-16'
-      },
-      {
-        id: 3,
-        type: 'transfer',
-        amount: 750,
-        fromAccount: 123456,
-        toAccount: 789012,
-        date: '2024-01-17'
-      }
-    ];
+    dispatch(fetchTransactionsSlice());
 
+    let mockTransactions = TransactionsItems;
     setTransactions(mockTransactions);
 
     // Calculate statistics
-    const deposits = mockTransactions.filter(t => t.type === 'deposit').reduce((sum, t) => sum + t.amount, 0);
-    const withdrawals = mockTransactions.filter(t => t.type === 'withdrawal').reduce((sum, t) => sum + t.amount, 0);
-    const transfers = mockTransactions.filter(t => t.type === 'transfer').reduce((sum, t) => sum + t.amount, 0);
+    const deposits = mockTransactions.filter(t => t.transActionTypeName === 'deposit').reduce((sum, t) => sum + t.amount, 0);
+    const withdrawals = mockTransactions.filter(t => t.transActionTypeName === 'withdrawal').reduce((sum, t) => sum + t.amount, 0);
+    const transfers = mockTransactions.filter(t => t.transActionTypeName === 'transfer').reduce((sum, t) => sum + t.amount, 0);
 
     setStats({
       totalDeposits: deposits,
@@ -124,33 +108,63 @@ export default function TransactionsBord() {
           </Card>
         </Grid>
       </Grid>
-
-      <TableContainer component={Paper}>
+      <TableContainer sx={{ height: '500px', overflow: 'auto' }} component={Paper}>
         <Table>
-          <TableHead>
+          <TableHead sx={{ position: 'sticky', top: 0, backgroundColor: ' #f0f0f0', zIndex: 1 }}>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Type</TableCell>
-              <TableCell>Amount</TableCell>
-              <TableCell>From Account</TableCell>
-              <TableCell>To Account</TableCell>
-              <TableCell>Date</TableCell>
+              {isMobile ? (
+                <>
+                  <TableCell>Type</TableCell>
+                  <TableCell>Amount</TableCell>
+                  <TableCell sx={{ textAlign: 'center' }}>Details</TableCell>
+                </>
+              ) : (
+                <>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Type</TableCell>
+                  <TableCell>Amount</TableCell>
+                  <TableCell>From Account</TableCell>
+                  <TableCell>To Account</TableCell>
+                  <TableCell sx={{ textAlign: 'center' }}>Date</TableCell>
+                </>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
             {transactions.map((transaction) => (
-              <TableRow key={transaction.id}>
-                <TableCell>{transaction.id}</TableCell>
-                <TableCell sx={{
-                  color: transaction.type === 'deposit' ? '#2e7d32' : 
-                         transaction.type === 'withdrawal' ? '#c62828' : '#1565c0'
-                }}>
-                  {transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}
-                </TableCell>
-                <TableCell>${transaction.amount.toFixed(2)}</TableCell>
-                <TableCell>{transaction.fromAccount || '-'}</TableCell>
-                <TableCell>{transaction.toAccount || '-'}</TableCell>
-                <TableCell>{transaction.date}</TableCell>
+              <TableRow key={transaction.transActionID}>
+                {isMobile ? (
+                  <>
+                    <TableCell sx={{
+                      color: transaction.transActionTypeName === 'deposit' ? '#2e7d32' : 
+                             transaction.transActionTypeName === 'withdrawal' ? '#c62828' : 
+                             transaction.transActionTypeName === 'transfer' ? '#1565c0' : '#000'
+                    }}>
+                      {transaction.transActionTypeName ? transaction.transActionTypeName.charAt(0).toUpperCase() + transaction.transActionTypeName.slice(1) : 'Unknown'}
+                    </TableCell>
+                    <TableCell>${transaction.amount.toFixed(2)}</TableCell>
+                    <TableCell sx={{ textAlign: 'center' }}>
+                      <IconButton onClick={() => console.log(transaction.transActionID)}>
+                        <ShowTransactionCard selectedTransactionID={transaction.transActionID} />
+                      </IconButton>
+                    </TableCell>
+                  </>
+                ) : (
+                  <>
+                    <TableCell>{transaction.transActionID}</TableCell>
+                    <TableCell sx={{
+                      color: transaction.transActionTypeName === 'deposit' ? '#2e7d32' : 
+                             transaction.transActionTypeName === 'withdrawal' ? '#c62828' : 
+                             transaction.transActionTypeName === 'transfer' ? '#1565c0' : '#000'
+                    }}>
+                      {transaction.transActionTypeName ? transaction.transActionTypeName.charAt(0).toUpperCase() + transaction.transActionTypeName.slice(1) : 'Unknown'}
+                    </TableCell>
+                    <TableCell>${transaction.amount.toFixed(2)}</TableCell>
+                    <TableCell>{transaction.clientID || '-'}</TableCell>
+                    <TableCell>{transaction.reciverID ? transaction.reciverID : '-'}</TableCell>
+                    <TableCell>{new Date(transaction.transActionDateTime).toLocaleString() || '-'}</TableCell>
+                  </>
+                )}
               </TableRow>
             ))}
           </TableBody>

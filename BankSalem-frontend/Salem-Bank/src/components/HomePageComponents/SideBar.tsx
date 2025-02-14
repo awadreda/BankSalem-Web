@@ -16,18 +16,22 @@ import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import PeopleIcon from '@mui/icons-material/People';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import LogoutIcon from '@mui/icons-material/Logout';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import LogOut from '../LogOut/LogOut';
 
 const drawerWidth = 240;
 
 const menuItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/' },
-  { text: 'Clients', icon: <PeopleIcon />, path: '/clients' },
-  { text: 'Transactions', icon: <PaymentsIcon />, path: '/transactions' },
-  { text: 'Logs History', icon: <HistoryIcon />, path: '/logs' },
-  { text: 'Admin', icon: <AdminPanelSettingsIcon />, path: '/admin' },
-  { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
-  { text: 'ATM', icon: <LocalAtmIcon />, path: '/atm' },
+  { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
+  { text: 'Clients', icon: <PeopleIcon />, path: '/dashboard/clients' },
+  { text: 'Transactions', icon: <PaymentsIcon />, path: '/dashboard/transactions' },
+  { text: 'Logs History', icon: <HistoryIcon />, path: '/dashboard/logs' },
+  { text: 'Admin', icon: <AdminPanelSettingsIcon />, path: '/dashboard/admin' },
+  { text: 'Settings', icon: <SettingsIcon />, path: '/dashboard/settings' },
+  { text: 'ATM', icon: <LocalAtmIcon />, path: '/dashboard/atm' },
+  // { text: 'Log Out', icon: <LogoutIcon />, path: '/logout' }, 
+
 ];
 
 export default function SideBar() {
@@ -126,6 +130,7 @@ export default function SideBar() {
         }}
       >
         {drawer}
+        <LogOut />
       </Drawer>
     </>
   );

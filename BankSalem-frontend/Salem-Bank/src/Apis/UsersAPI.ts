@@ -38,6 +38,18 @@ import { User } from "../Types/types";
     }
 
 
+    export const getUserByUserNameandPassWordApi = async (UserName: string, Password: string) => {
+      try {
+        const response =
+          await api.get(`/UserControllers/FindUserByUserNameandPassWord?UserName=${UserName}&Password=${Password}`);  
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching user by UserName and Password:", error);  
+        throw error;
+      }
+    }
+
+
     export const createUserApi = async (user: User) => {
       try {
         const response = await api.post("/UserControllers", user);

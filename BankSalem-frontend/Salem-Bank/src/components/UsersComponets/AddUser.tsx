@@ -56,6 +56,7 @@ export default function AddUser() {
   };
 
   const handleAddUserButton = () => {
+    console.log("user from addUser : ", user);
     dispatch(createUser(user)).then(() => {
       dispatch(getAllUsers());
       handleClose();
@@ -174,9 +175,9 @@ export default function AddUser() {
 
 
           >
-            <MenuItem value={0}>User</MenuItem>
-            <MenuItem value={1}>Admin</MenuItem>
-            <MenuItem value={2}>Super Admin</MenuItem>
+            <MenuItem value={1}>User</MenuItem>
+            <MenuItem value={2}>Admin</MenuItem>
+            <MenuItem value={3}>Super Admin</MenuItem>
           </TextField>
           <TextField
             label="First Name"

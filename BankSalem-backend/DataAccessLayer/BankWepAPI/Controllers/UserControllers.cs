@@ -70,6 +70,33 @@ namespace BankWepAPI.Controllers
             return Ok(UsersList);
         }
 
+
+            [HttpGet("FindUserByUserNameandPassWord", Name = "FindUserByUserNameandPassWord ")]
+            [ProducesResponseType(StatusCodes.Status200OK)]
+            [ProducesResponseType(StatusCodes.Status404NotFound)]
+            [ProducesResponseType(StatusCodes.Status400BadRequest)]
+            public ActionResult<UserDTO> FindUserByUserNameandPassWord(string UserName, string Password)
+            {
+                if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
+                {
+                    return BadRequest("UserName and Password are required");
+                }
+
+                var user = UserBussinees.FindUserNameAndPassword(UserName, Password);
+
+                if (user == null)
+                {
+                    return NotFound("The UserName or Password is not correct");
+                }   
+
+                return Ok(user.UDTO);
+            }
+
+
+
+
+
+
         [HttpPost(Name = "AddNewUser")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -90,11 +117,14 @@ namespace BankWepAPI.Controllers
             user.Email = newUserDto.Email;
             user.Phone = newUserDto.Phone;
 
-            user.Save();
-
-            newUserDto = user.UDTO;
+            if (user.Save())
+            {
+                newUserDto = user.UDTO;
 
             return CreatedAtRoute("GetUserByID", new { id = newUserDto.User_ID }, user.UDTO);
+            }
+
+            return BadRequest("User not saved");
         }
 
         [HttpDelete("{userID}", Name = "DeleteUser")]

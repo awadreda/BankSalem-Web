@@ -1,17 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { User } from "../../Types/types";
+import { User, UserLogin } from "../../Types/types";
 import {
   getAllUsersApi,
   getUserByIdApi,
   createUserApi,
   updateUserApi,
   deleteUserApi,
+  getUserByUserNameandPassWordApi,
 } from "../../Apis/UsersAPI";
 interface UserState {
   users: User[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   user: User;
+  CurrentUser: User | null;
 }
 
 const initialState: UserState = {
@@ -28,6 +30,7 @@ const initialState: UserState = {
     email: "",
     phone: "",
   },
+  CurrentUser:null
 };
 
 export const getAllUsers = createAsyncThunk("users/getAllUsers", async () => {
@@ -46,6 +49,16 @@ export const getUserById = createAsyncThunk(
     return response;
   }
 );
+
+
+export const getUserByUserNameandPassWord = createAsyncThunk(
+  "users/getUserByUserNameandPassWord",
+    async (userLogin: UserLogin) => {
+    const response = await getUserByUserNameandPassWordApi(userLogin.userName, userLogin.password);
+    return response;
+  }
+);
+
 
 export const createUser = createAsyncThunk(
   "users/createUser",
@@ -94,6 +107,7 @@ const UsersSlice = createSlice({
       })
 
 
+
       // Handle getUserById cases  
       .addCase(getUserById.pending, (state) => {
         state.status = "loading";
@@ -103,6 +117,20 @@ const UsersSlice = createSlice({
         state.user = action.payload; // Update single user with fetched data
       })
       .addCase(getUserById.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "failed To Fetch User";
+        console.log("action.error : ", action.error);
+      })
+
+      // Handle getUserByUserNameandPassWord cases
+      .addCase(getUserByUserNameandPassWord.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getUserByUserNameandPassWord.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.user = action.payload; // Update single user with fetched data
+      })  
+      .addCase(getUserByUserNameandPassWord.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "failed To Fetch User";
         console.log("action.error : ", action.error);

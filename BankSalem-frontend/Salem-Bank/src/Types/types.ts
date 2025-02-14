@@ -62,9 +62,29 @@ export interface Deposit_WithDraw_Request {
 }
 
 
+export interface LogRegister {
+  logID: number; // integer($int32)
+  userID: number; // integer($int32)
+  userName: string | null; // string, nullable: true
+  logTypeID: number; // integer($int32)
+  logeTypeName: string; // string, nullable: true
+  logTime: string; // string($date-time)
+}
+
+export interface LogType {
+  userID: number; // integer($int32)
+  logTypeID: number; // integer($int32)
+  
+}
 
 
 
+
+
+export interface UserLogin {
+  userName: string;
+  password: string;
+}
 
 
 
