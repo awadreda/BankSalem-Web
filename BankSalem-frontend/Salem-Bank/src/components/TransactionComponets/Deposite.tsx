@@ -19,9 +19,9 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
   const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
   const Client = useAppSelector((state) => state.clients.client);
+  const CurrentClient = useAppSelector((state) => state.clients.CurrentClient);
 
-
-
+  
 
 
   const handleClickOpen = () => {
@@ -42,7 +42,7 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button sx={{ width: CurrentClient ? "100%" : "auto", opacity: CurrentClient ? 1 : 0 }} variant="outlined" onClick={handleClickOpen}>
         Deposite
       </Button>
       <Dialog

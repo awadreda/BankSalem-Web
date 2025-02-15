@@ -186,6 +186,72 @@ namespace BankSalemDataAccessLayer
             return isFound;
         }
 
+
+
+        public static bool getClientByEmailAndPINCODE(
+            
+            ref int ClientID,
+            ref int PersonID,
+            ref string FirstName,
+            ref string LastName,
+             string Email,
+            ref string Phone,
+            ref string AccountNumber,
+             string PINCODE,
+            ref double AccountBalance
+        )
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(DataConnectionSettings.ConnectionString);
+
+            string query =
+                @"SELECT *
+                 FROM [myBankDb].[dbo].[Clients_Persons_List]
+                where Email = @Email AND PINCODE = @PINCODE";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@Email", Email);
+            command.Parameters.AddWithValue("@PINCODE", PINCODE);
+
+            try
+            {
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                     ClientID = (int)reader["ClientID"];
+                    PersonID = (int)reader["PersonID"];
+                    FirstName = (string)reader["FirstName"];
+                    LastName = (string)reader["LastName"];
+                    Phone = (string)reader["Phone"];
+                    AccountNumber = (string)reader["AccountNumber"];
+                    PINCODE = (string)reader["PINCode"];
+                    AccountBalance = Convert.ToSingle(reader["AccountBalance"]);
+                }
+
+                reader.Close();
+
+                isFound = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("erro " + ex.Message);
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }   
+
+
+
         public static bool getClientByAccountNumber(
             string AccountNumber,
             ref string Email,
@@ -376,6 +442,8 @@ namespace BankSalemDataAccessLayer
 
             return isfound;
         }
+
+
 
         //public static bool AddNewCLientint(ref int ClientID,ref int  Person_id , string FirstName,  string LastName,  string Email,  string Phone,  string AccountNumber
         //  ,  string PINCODE,  double AccountBalance)

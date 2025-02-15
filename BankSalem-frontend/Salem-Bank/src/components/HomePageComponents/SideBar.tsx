@@ -19,6 +19,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import LogOut from '../LogOut/LogOut';
+import { Typography } from '@mui/material';
+import { useAppSelector } from '../../hooks';
 
 const drawerWidth = 240;
 
@@ -38,6 +40,7 @@ export default function SideBar() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const isMobile = useMediaQuery('(max-width:950px)');
+  const user = useAppSelector((state) => state.users.CurrentUser);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -45,6 +48,9 @@ export default function SideBar() {
 
   const drawer = (
     <Box sx={{ overflow: 'auto', mt: 8 }}>
+      <Typography variant="h6" align="center" sx={{ fontWeight: "bold",fontSize: "1.5rem", mb: 2, color: "white" }}>
+        {user?.firstName} {user?.lastName} 
+      </Typography>
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>

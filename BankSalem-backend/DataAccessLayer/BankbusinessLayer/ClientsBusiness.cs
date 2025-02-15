@@ -204,6 +204,28 @@ namespace BankbusinessLayer
             }
         }
 
+
+        public static ClientsBusiness? FindClientByEmailAndPINCODE(string Email, string PINCODE)
+        {
+            string FirstName = "";
+            string LastName = "";
+            string Phone = "";
+            string AccountNumber = "";
+            double AccountBalance = 0;
+
+            int PersonID = -1;
+            int ClientID = -1;
+            if (ClientsData.getClientByEmailAndPINCODE(ref ClientID, ref PersonID, ref FirstName, ref LastName, Email, ref Phone, ref AccountNumber, PINCODE, ref AccountBalance))
+            {
+                return new ClientsBusiness(ClientID, PersonID, FirstName, LastName, Email, Phone, AccountNumber, PINCODE, AccountBalance);
+            }
+            else
+            {
+                return null;        
+            }
+        }
+
+
         public static ClientsBusiness? FindClientByName(string FirstName)
         {
             int ClintID = -1;

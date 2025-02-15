@@ -16,21 +16,23 @@ import PaymentsIcon from "@mui/icons-material/Payments";
 import SendIcon from "@mui/icons-material/Send";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import PersonIcon from "@mui/icons-material/Person";
-import { useAppSelector } from "../hooks";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import Deposite from "../components/TransactionComponets/Deposite";
 
 // Add this sample client data
-const sampleClient = {
-  id: 1001,
-  firstName: "John",
-  lastName: "Doe",
-  accountNumber: "1234-5678-9012-3456",
-};
+// const sampleClient = {
+//   id: 1001,
+//   firstName: "John",
+//   lastName: "Doe",
+//   accountNumber: "1234-5678-9012-3456",
+// };
 
 export default function ATMPage() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const client = sampleClient;
-  
+  // const client = sampleClient;
+  const client = useAppSelector((state) => state.clients.CurrentClient);
+  const dispatch = useAppDispatch();
 
   const ATMOptions = [
     {
@@ -38,6 +40,11 @@ export default function ATMPage() {
       icon: <PaymentsIcon sx={{ fontSize: 50, color: "#059669" }} />,
       bgColor: "#ECFDF5",
       textColor: "#065F46",
+      onClick: () => {
+        if (client) {
+          <Deposite  selectedClientID={client.id} />
+        }
+      },
     },
     {
       title: "Withdraw",
@@ -153,6 +160,7 @@ export default function ATMPage() {
           {ATMOptions.map((option, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card
+                onClick={option.onClick}
                 sx={{
                   bgcolor: option.bgColor,
                   height: "100%",

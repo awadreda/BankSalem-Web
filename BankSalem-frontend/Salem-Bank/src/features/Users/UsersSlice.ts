@@ -128,7 +128,7 @@ const UsersSlice = createSlice({
       })
       .addCase(getUserByUserNameandPassWord.fulfilled, (state, action) => {
         state.status = "idle";
-        state.user = action.payload; // Update single user with fetched data
+        state.CurrentUser = action.payload; // Update single user with fetched data
       })  
       .addCase(getUserByUserNameandPassWord.rejected, (state, action) => {
         state.status = "failed";

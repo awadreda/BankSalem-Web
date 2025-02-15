@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Client } from "../Types/types";
+import { Client, ClientLogin } from "../Types/types";
 
 const api = axios.create({
   baseURL: `http://localhost:5225/api`, // Use the proxy
@@ -24,6 +24,28 @@ export const FindClientByIdApi = async (clientID: number) => {
     throw error;
   }
 };
+
+export const FindClientByEmailAndPINCODEApi = async (clientLogin: ClientLogin) => {
+  const encodedEmail = clientLogin.email.replace(/@/g, "%40");
+  try {
+    const response = await api.get(
+      `/Clients/EmailAndPINCODE?Email=${encodedEmail}&PINCODE=${clientLogin.pincode}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "text/plain",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching client by email and PINCODE:", error);  
+    throw error;
+  }
+};
+
+
+
 
 export const getClients = async () => {
   try {

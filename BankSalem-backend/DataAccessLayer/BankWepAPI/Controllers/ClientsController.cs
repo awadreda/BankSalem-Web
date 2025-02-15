@@ -36,6 +36,27 @@ namespace BankWepAPI.Controllers
             return Ok(CDTO);
         }
 
+        [HttpGet("EmailAndPINCODE", Name = "GetClientByEmailAndPINCODE")]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
+        [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
+        [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+        public ActionResult<ClientDTO> GetClientByEmailAndPINCODE(string Email, string PINCODE)
+        {
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(PINCODE))
+            {
+                return BadRequest("Email and PINCODE are required");
+            }
+
+            var client = ClientsBusiness.FindClientByEmailAndPINCODE(Email, PINCODE);
+
+            if (client == null)
+            {
+                return NotFound("Email or PINCODE is not correct");
+            }
+
+            return Ok(client.CDTO);
+        }           
+
         [HttpGet("All", Name = "GetAllClients")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<ClientDTO>> GetAllClients()

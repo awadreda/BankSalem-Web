@@ -6,46 +6,71 @@ import {
   Typography,
   Container,
   Paper,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { UserLogin } from '../Types/types';
+import { UserLogin, ClientLogin } from '../Types/types';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { getUserByUserNameandPassWord } from '../features/Users/UsersSlice';
+import { FindClientByEmailAndPINCODEClientSlice } from '../features/Clinets/ClinetsSlice';
 
 const LogInPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [userType, setUserType] = useState('Admin'); // Set default userType to 'Admin'
   const navigate = useNavigate(); // Initialize useNavigate
   const dispatch = useAppDispatch();
-  const  user  = useAppSelector((state) => state.users.user); 
+  const user = useAppSelector((state) => state.users.CurrentUser); 
+  const client = useAppSelector((state) => state.clients.CurrentClient);
 
-  const handleLogin = () => {
-    // Handle login logic here
-
-    const userLogin: UserLogin = {
-      userName: username,
-      password: password,
+  const LogInUser = () => {
+     const userLogin: UserLogin = {
+     userName: username,
+     password: password,
     };
     dispatch(getUserByUserNameandPassWord(userLogin));
-
-  if(user)
-    {
-        console.log('Logging in with:', { username, password });
-        navigate("/dashboard"); // Navigate to another page on successful login 
-
-    }   
-    else
-    {
+    
+    if (user !== null) {
+      console.log('Logging in with:', { username, password });
+      console.log('User:', user);
+      navigate("/dashboard"); // Navigate to another page on successful login 
+    } else {
       console.log('Invalid username or password');
+
+    }
+  }
+
+  const LogInClient = () => {
+    const clientLogin: ClientLogin = {
+     email: username,
+     pincode: password,
+    };
+    dispatch(FindClientByEmailAndPINCODEClientSlice(clientLogin));
+
+    if (client !== null) {
+      console.log('Logging in with:', { username, password });
+      console.log('Client:', client);
+      navigate("/clientATM"); // Navigate to another page on successful login 
+    } else {
+      console.log('Invalid email or pincode');
+    }
+  }
+
+  const handleLogin = () => {
+    if (userType === 'Admin') {
+      LogInUser();
     }
 
-    // if (username === 'admin' && password === 'admin') { 
-    //   console.log('Logging in with:', { username, password });
-    //   navigate("/dashboard"); // Navigate to another page on successful login
-    // } else {
-    //   console.log('Invalid username or password');
-    // }
-  };
+    else{
+      LogInClient();
+    }
+  }
+
+
+
+  
 
   return (
     <Container component="main" maxWidth="xs">
@@ -62,12 +87,20 @@ const LogInPage = () => {
             handleLogin();
           }
         }>
-
+          <RadioGroup
+            row
+            value={userType}
+            onChange={(e) => setUserType(e.target.value)}
+            sx={{ mb: 2 }}
+          >
+            <FormControlLabel value="Admin" control={<Radio />} label="Admin" />
+            <FormControlLabel value="Client" control={<Radio />} label="Client" />
+          </RadioGroup>
           <TextField
             margin="normal"
             required
             fullWidth
-            label="Username"
+            label={userType === 'Admin' ? 'Username' : 'Email'}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoFocus
@@ -76,7 +109,7 @@ const LogInPage = () => {
             margin="normal"
             required
             fullWidth
-            label="Password"
+            label={userType === 'Admin' ? 'Password' : 'PINCODE'}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

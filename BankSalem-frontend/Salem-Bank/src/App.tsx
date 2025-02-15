@@ -10,6 +10,7 @@ import AdminBord from './Pages/AdminBord'
 import ATMPage from './Pages/ATMPage'
 import LogInPage from './Pages/LogInPage'
 import UserViewPage from './Pages/UserViewPage'
+import ClientATMViewPage from './Pages/ClientATMViewPage'
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LogInPage />} />
         <Route path="/dashboard/*" element={<UserViewPage />} />
+        <Route path="/clientATM/*" element={<ClientATMViewPage />} />
       </Routes>
     </>
   );
