@@ -18,7 +18,9 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import PersonIcon from "@mui/icons-material/Person";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import Deposite from "../components/TransactionComponets/Deposite";
-
+import Withdraw from "../components/TransactionComponets/Withdraw";
+import Transfer from "../components/TransactionComponets/Transfer";
+import ShowClientCardFromATM from "../components/ATMComponents/ATMComponents";
 // Add this sample client data
 // const sampleClient = {
 //   id: 1001,
@@ -40,23 +42,21 @@ export default function ATMPage() {
       icon: <PaymentsIcon sx={{ fontSize: 50, color: "#059669" }} />,
       bgColor: "#ECFDF5",
       textColor: "#065F46",
-      onClick: () => {
-        if (client) {
-          <Deposite  selectedClientID={client.id} />
-        }
-      },
+      transaction: <Deposite selectedClientID={client?.id ?? 0} />
     },
     {
       title: "Withdraw",
       icon: <AccountBalanceIcon sx={{ fontSize: 50, color: "#DC2626" }} />,
       bgColor: "#FEF2F2",
       textColor: "#991B1B",
+      transaction: <Withdraw selectedClientID={client?.id ?? 0} />
     },
     {
       title: "Transfer",
       icon: <SendIcon sx={{ fontSize: 50, color: "#2563EB" }} />,
       bgColor: "#EFF6FF",
       textColor: "#1E40AF",
+      transaction: <Transfer selectedClientID={client?.id ?? 0} />
     },
     {
       title: "Balance",
@@ -65,6 +65,7 @@ export default function ATMPage() {
       ),
       bgColor: "#FEF3C7",
       textColor: "#92400E",
+      transaction: <ShowClientCardFromATM selectedClientID={client?.id ?? 0} />
     },
   ];
 
@@ -160,7 +161,7 @@ export default function ATMPage() {
           {ATMOptions.map((option, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card
-                onClick={option.onClick}
+                
                 sx={{
                   bgcolor: option.bgColor,
                   height: "100%",
@@ -181,8 +182,10 @@ export default function ATMPage() {
                       flexDirection: "column",
                       alignItems: "center",
                       gap: 3,
+                      position: "relative",
                     }}
                   >
+                    {option.transaction}
                     {option.icon}
                     <Typography
                       variant={isMobile ? "h6" : "h5"}

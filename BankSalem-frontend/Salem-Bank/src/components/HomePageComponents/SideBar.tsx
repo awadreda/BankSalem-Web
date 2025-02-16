@@ -20,8 +20,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import LogOut from '../LogOut/LogOut';
 import { Typography } from '@mui/material';
-import { useAppSelector } from '../../hooks';
-
+import { useAppSelector, useAppDispatch  } from '../../hooks';
+import { GetCurrentUserIDFromLocalStorage } from '../../Global/CurrentUserAndClent';
+import { User } from '../../Types/types';
+import { useEffect } from 'react';
+import { getCurrentUserByID } from '../../features/Users/UsersSlice';
 const drawerWidth = 240;
 
 const menuItems = [
@@ -40,7 +43,17 @@ export default function SideBar() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const isMobile = useMediaQuery('(max-width:950px)');
-  const user = useAppSelector((state) => state.users.CurrentUser);
+  // const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const currentUserID = GetCurrentUserIDFromLocalStorage();
+  const currentUser = useAppSelector((state) => state.users.CurrentUser);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if(currentUserID) {
+      dispatch(getCurrentUserByID(parseInt(currentUserID)));
+    }
+  }, [currentUser]);
+  
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -49,7 +62,7 @@ export default function SideBar() {
   const drawer = (
     <Box sx={{ overflow: 'auto', mt: 8 }}>
       <Typography variant="h6" align="center" sx={{ fontWeight: "bold",fontSize: "1.5rem", mb: 2, color: "white" }}>
-        {user?.firstName} {user?.lastName} 
+        {currentUser?.firstName} {currentUser?.lastName} 
       </Typography>
       <List>
         {menuItems.map((item) => (

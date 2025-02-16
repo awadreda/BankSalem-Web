@@ -42,7 +42,7 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
 
   return (
     <React.Fragment>
-      <Button sx={{ width: CurrentClient ? "100%" : "auto", opacity: CurrentClient ? 1 : 0 }} variant="outlined" onClick={handleClickOpen}>
+        <Button sx={{ position: CurrentClient ? "absolute" : "relative", width: CurrentClient ? "100%" : "auto" ,height: CurrentClient ? "100%" : "auto" ,opacity: CurrentClient ? 0 : 1 }} variant="outlined" onClick={handleClickOpen}>
         Deposite
       </Button>
       <Dialog

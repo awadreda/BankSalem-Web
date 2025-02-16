@@ -30,6 +30,7 @@ import AddUser from "../components/UsersComponets/AddUser";
 import EditUser from "../components/UsersComponets/EditUser";
 import DeleteUser from "../components/UsersComponets/DeleteUser";
 import ShowUserProfile from "../components/UsersComponets/ShowUserProfile";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminBord() {
   const theme = useTheme();
@@ -43,6 +44,8 @@ export default function AdminBord() {
   const users = stateUsers?.users || [];
   const status = stateUsers?.status;
   const error = stateUsers?.error;
+  const currentUser = stateUsers?.CurrentUser;
+  const navigate = useNavigate();
 
   const refetchUsers = () => {
     dispatch(getAllUsers());
@@ -58,6 +61,12 @@ export default function AdminBord() {
   });
 
   useEffect(() => {
+    if(currentUser == null)
+    {
+      navigate("/");
+
+    }
+
     refetchUsers();
     console.log("users : ", users);
   }, []);

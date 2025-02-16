@@ -7,24 +7,28 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import Avatar from '@mui/material/Avatar';
-import PersonIcon from '@mui/icons-material/Person';
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneIcon from '@mui/icons-material/Phone';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import Avatar from "@mui/material/Avatar";
+import PersonIcon from "@mui/icons-material/Person";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import { useAppSelector } from "../../hooks";
 import TransactionsMenu from "../TransactionComponets/TransactionsMenu";
-import DeleteClinTableMenue from "./DeleteClinTableMenue";
-import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
 
-export default function ShowClientCard({ selectedClientID }: { selectedClientID: number }) {
+
+
+export default function ShowClientCardFromATM({
+  selectedClientID,
+}: {
+  selectedClientID: number;
+}) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Added isMobile variable
-  const isTablet = useMediaQuery(theme.breakpoints.down("md")); // Added isTablet variable
-  
+  const CurrentClient = useAppSelector((state) =>
+    state.clients.CurrentClient
+  );
+
   const Client = useAppSelector((state) =>
     state.clients.clients.find((client) => client.id === selectedClientID)
   );
@@ -39,17 +43,12 @@ export default function ShowClientCard({ selectedClientID }: { selectedClientID:
 
   return (
     <React.Fragment>
-      {isMobile || isTablet ? (
-        <IconButton onClick={handleClickOpen}>
-            <InfoIcon />
-          </IconButton>
-      ) : (
-        <Button  variant="outlined" onClick={handleClickOpen}>
+     
+        <Button sx={{ position: CurrentClient ? "absolute" : "relative", width: CurrentClient ? "100%" : "auto" ,height: CurrentClient ? "100%" : "auto" ,opacity: CurrentClient ? 0 : 1 }} variant="outlined" onClick={handleClickOpen}>
           View Details
         </Button>
-      )}
     
-    
+
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -150,12 +149,8 @@ export default function ShowClientCard({ selectedClientID }: { selectedClientID:
           </DialogContentText>
         </DialogContent>
         <DialogActions sx={{ padding: "16px 24px" }}>
-          <TransactionsMenu selectedClientID={selectedClientID} />
-          <DeleteClinTableMenue
-            onClose={handleClose}
-            ClientID={selectedClientID}
-          />
-
+            
+         
           <Button
             onClick={handleClose}
             variant="contained"

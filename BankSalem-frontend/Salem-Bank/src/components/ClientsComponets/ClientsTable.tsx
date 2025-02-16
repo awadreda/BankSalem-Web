@@ -8,12 +8,13 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchClients } from "../../features/Clinets/ClinetsSlice";
 import AddClient from "./AddClient";
 import RowClineMenue from "./RowClineMenue";
-import { useTheme, useMediaQuery, Box } from "@mui/material";
+import { useTheme, useMediaQuery, Box, TextField, InputAdornment } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 import ClientCard from "./ClientsCardsList/ClientCard";
 
@@ -67,6 +68,7 @@ export default function ClientsTable() {
   }>({ element: null, position: null });
   const [selectedClientID, setSelectedClientId] = React.useState<number>(-1);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useAppDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -74,13 +76,21 @@ export default function ClientsTable() {
 
   const ClientsAPI = useAppSelector((state) => state.clients);
 
-  let clients =  useMemo(() => ClientsAPI.clients, [ClientsAPI.clients]);
+  let clients = useMemo(() => ClientsAPI.clients, [ClientsAPI.clients]);
+
+  const filteredClients = useMemo(() => {
+    return clients.filter(client => 
+      client.firstName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      client.lastName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      client.email?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [clients, searchTerm]);
 
   const momoizedCLientCard = useMemo(() => {
-    return clients.map((client) => (
+    return filteredClients.map((client) => (
       <ClientCard key={client.id} client={client} />
     ));
-  }, [clients]);
+  }, [filteredClients]);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -159,6 +169,21 @@ export default function ClientsTable() {
         <AddClient />
       </div>
 
+      <TextField
+        variant="outlined"
+        placeholder="Search Clients..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+        sx={{ marginBottom: "20px", width: "100%" }}
+      />
+
       {isMobile || isTablet ? (
         <div style={{ maxHeight: "600px", overflowY: "auto" }}>
           {momoizedCLientCard}
@@ -188,7 +213,7 @@ export default function ClientsTable() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {clients
+                  {filteredClients
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((client) => (
                       <TableRow
@@ -226,7 +251,7 @@ export default function ClientsTable() {
             <TablePagination
               rowsPerPageOptions={[10, 25, 100]}
               component="div"
-              count={clients.length}
+              count={filteredClients.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {  useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -13,9 +13,9 @@ import {
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { UserLogin, ClientLogin } from '../Types/types';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { getUserByUserNameandPassWord } from '../features/Users/UsersSlice';
+import {  getUserByUserNameandPassWord } from '../features/Users/UsersSlice';
 import { FindClientByEmailAndPINCODEClientSlice } from '../features/Clinets/ClinetsSlice';
-
+import { SaveCurrentUserIDINLocalStorage, SaveCurrentClientIDINLocalStorage } from '../Global/CurrentUserAndClent';
 const LogInPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -24,53 +24,102 @@ const LogInPage = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.users.CurrentUser); 
   const client = useAppSelector((state) => state.clients.CurrentClient);
+  const userStatus = useAppSelector((state) => state.users.status);
+  const clientStatus = useAppSelector((state) => state.clients.status);
+  const [logClicked, setLogClicked] = useState(false);
 
   const LogInUser = () => {
      const userLogin: UserLogin = {
      userName: username,
      password: password,
     };
-    dispatch(getUserByUserNameandPassWord(userLogin));
-    
-    if (user !== null) {
-      console.log('Logging in with:', { username, password });
-      console.log('User:', user);
-      navigate("/dashboard"); // Navigate to another page on successful login 
-    } else {
-      console.log('Invalid username or password');
+    dispatch(getUserByUserNameandPassWord(userLogin)).then(() => {
+      console.log("userStatus:", userStatus);
+      console.log("user:", user);
+      if (user !== null) {
+        console.log('Logging in with:', { username, password });
+        console.log('User:', user);
+        navigate("/dashboard"); // Navigate to another page on successful login 
+      } else {
+        console.log('Invalid username or password') ;
+      }
+      console.log("userStatus:", userStatus);
+      console.log("user:", user);
+    });
+  };
 
+  useEffect(() => {
+   if(userType === "Admin" && logClicked) {
+    console.log("Logging in as Admin");
+     dispatch(getUserByUserNameandPassWord({userName: username, password: password}));  
+     console.log("userStatus:", userStatus);
+     console.log("user:", user);
+     if(user !== null) {
+      console.log("Logging in with:", { username, password });
+      console.log("User:", user);
+      navigate("/dashboard"); // Navigate to another page on successful login 
+      SaveCurrentUserIDINLocalStorage(user.user_ID);
+     } else {
+      console.log("Invalid username or password") ;
+     }
+   } else if(userType === "Client" && logClicked) {
+     console.log("Logging in as Client");
+     dispatch(FindClientByEmailAndPINCODEClientSlice({email: username, pincode: password}));
+     console.log("clientStatus:", clientStatus);
+     console.log("client:", client);
+     if(client !== null) {
+       console.log("Logging in with:", { username, password });
+       console.log("Client:", client);
+       navigate("/clientATM"); // Navigate to another page on successful login
+       SaveCurrentClientIDINLocalStorage(client.id);
+    } else {
+      console.log("Invalid email or pincode");
     }
-  }
+   }
+  }, [ user, client]); 
+
+      
+
+    
 
   const LogInClient = () => {
     const clientLogin: ClientLogin = {
      email: username,
      pincode: password,
     };
-    dispatch(FindClientByEmailAndPINCODEClientSlice(clientLogin));
-
-    if (client !== null) {
-      console.log('Logging in with:', { username, password });
-      console.log('Client:', client);
-      navigate("/clientATM"); // Navigate to another page on successful login 
-    } else {
-      console.log('Invalid email or pincode');
-    }
+    dispatch(FindClientByEmailAndPINCODEClientSlice(clientLogin)).then(() => {
+      console.log("clientStatus:", clientStatus);
+       if (client !== null) {
+         console.log("Logging in with:", { username, password });
+         console.log("Client:", client);
+         navigate("/clientATM"); // Navigate to another page on successful login
+       } else {
+         console.log("Invalid email or pincode");
+       }
+    });
   }
 
+    
+  
   const handleLogin = () => {
     if (userType === 'Admin') {
       LogInUser();
-    }
-
-    else{
+      if(user !== null) {
+      }
+    } else {
       LogInClient();
+      if(client !== null) {
+      }
     }
-  }
 
 
+}
 
   
+
+
+  const isLoading = userStatus === 'loading' || clientStatus === 'loading';
+  const isFailed = userStatus === 'failed' || clientStatus === 'failed';
 
   return (
     <Container component="main" maxWidth="xs">
@@ -104,6 +153,7 @@ const LogInPage = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoFocus
+            disabled={isLoading}
           />
           <TextField
             margin="normal"
@@ -113,15 +163,19 @@ const LogInPage = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading}
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 2, mb: 2, bgcolor: "#1976d2" }}
+            disabled={isLoading}
+            onClick={() => setLogClicked(true)}
           >
-            Log In
+            {isLoading ? 'Logging In...' : 'Log In'}
           </Button>
+          {isFailed && <Typography color="error">Login failed. Please try again.</Typography>}
         </Box>
       </Paper>
     </Container>

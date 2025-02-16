@@ -50,6 +50,13 @@ export const getUserById = createAsyncThunk(
   }
 );
 
+export const getCurrentUserByID = createAsyncThunk(
+  "users/getCurrentUserByID",
+  async (id: number) => {
+    const response = await getUserByIdApi(id);
+    return response;
+  }
+);
 
 export const getUserByUserNameandPassWord = createAsyncThunk(
   "users/getUserByUserNameandPassWord",
@@ -121,6 +128,21 @@ const UsersSlice = createSlice({
         state.error = action.error.message || "failed To Fetch User";
         console.log("action.error : ", action.error);
       })
+
+      // Handle getCurrentUserByID cases
+      .addCase(getCurrentUserByID.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getCurrentUserByID.fulfilled, (state, action) => {
+        state.status = "idle";  
+        state.CurrentUser = action.payload; // Update single user with fetched data
+      })
+      .addCase(getCurrentUserByID.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "failed To Fetch User";
+        console.log("action.error : ", action.error);
+      })  
+        
 
       // Handle getUserByUserNameandPassWord cases
       .addCase(getUserByUserNameandPassWord.pending, (state) => {

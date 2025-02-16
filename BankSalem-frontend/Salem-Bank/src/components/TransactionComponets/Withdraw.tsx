@@ -26,6 +26,9 @@ export default function Withdraw({
   const Client = useAppSelector((state) =>
     state.clients.clients.find((client) => client.id === selectedClientID)
   );
+  const CurrentClient = useAppSelector((state) =>
+    state.clients.CurrentClient
+  );
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -39,7 +42,7 @@ export default function Withdraw({
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button sx={{ position: CurrentClient ? "absolute" : "relative", width: CurrentClient ? "100%" : "auto" ,height: CurrentClient ? "100%" : "auto" ,opacity: CurrentClient ? 0 : 1 }} variant="outlined" onClick={handleClickOpen}>
           Withdraw
       </Button>
       <Dialog
