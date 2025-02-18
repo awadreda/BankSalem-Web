@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect         } from "react";
 import {
   Container,
   Paper,
@@ -21,6 +21,11 @@ import Deposite from "../components/TransactionComponets/Deposite";
 import Withdraw from "../components/TransactionComponets/Withdraw";
 import Transfer from "../components/TransactionComponets/Transfer";
 import ShowClientCardFromATM from "../components/ATMComponents/ATMComponents";
+import {FindClientByIdClientSlice} from "../features/Clinets/ClinetsSlice";
+import { FindClientByEmailAndPINCODEClientSlice } from "../features/Clinets/ClinetsSlice";
+  import {  ClientLogin} from "../Types/types";
+import { useNavigate } from "react-router-dom";
+
 // Add this sample client data
 // const sampleClient = {
 //   id: 1001,
@@ -33,8 +38,42 @@ export default function ATMPage() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   // const client = sampleClient;
-  const client = useAppSelector((state) => state.clients.CurrentClient);
+  const client = useAppSelector((state) => state.clients.client);
+  const CurrentClient = useAppSelector((state) => state.clients.CurrentClient);
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
+  const [clientIdFormLoaclStorage, setClientIdFormLoaclStorage] = useState<number>(0);  
+ 
+
+  useEffect(() => {
+    
+    const clientId = localStorage.getItem("currentClientID");
+    if (clientId !== null) {
+      const parsedClientId = parseInt(clientId);
+      setClientIdFormLoaclStorage(parsedClientId);
+      dispatch(FindClientByIdClientSlice(parsedClientId));
+      console.log(parsedClientId);
+      console.log(client);
+
+          }  
+          else{
+           navigate("/");
+          }
+  }, [clientIdFormLoaclStorage]);
+
+
+  useEffect(() => {
+
+   
+      dispatch(FindClientByEmailAndPINCODEClientSlice({
+        email: client?.email,
+        pincode: client?.pincode
+      } as ClientLogin));     
+      console.log("from useEffect ATM currentClient:", CurrentClient);
+    
+    
+  }, [client]);
 
   const ATMOptions = [
     {
@@ -68,6 +107,8 @@ export default function ATMPage() {
       transaction: <ShowClientCardFromATM selectedClientID={client?.id ?? 0} />
     },
   ];
+
+
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>

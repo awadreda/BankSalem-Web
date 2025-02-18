@@ -88,8 +88,8 @@ export interface UserLogin {
 
 
 export interface ClientLogin {
-  email: string;
-  pincode: string;
+  email: string | null;
+  pincode: string | null;
 }
 
 

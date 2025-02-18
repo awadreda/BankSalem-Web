@@ -37,7 +37,9 @@ export const FindClientByEmailAndPINCODEApi = async (clientLogin: ClientLogin) =
         },
       }
     );
+    
     return response.data;
+    console.log("response from ClinetsApi", response.data);
   } catch (error) {
     console.error("Error fetching client by email and PINCODE:", error);  
     throw error;

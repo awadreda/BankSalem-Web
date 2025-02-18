@@ -223,6 +223,7 @@ namespace BankSalemDataAccessLayer
 
                 if (reader.Read())
                 {
+                isFound = true;
                      ClientID = (int)reader["ClientID"];
                     PersonID = (int)reader["PersonID"];
                     FirstName = (string)reader["FirstName"];
@@ -235,7 +236,6 @@ namespace BankSalemDataAccessLayer
 
                 reader.Close();
 
-                isFound = true;
             }
             catch (Exception ex)
             {

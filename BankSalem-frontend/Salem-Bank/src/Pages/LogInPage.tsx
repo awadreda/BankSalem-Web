@@ -33,6 +33,8 @@ const LogInPage = () => {
      userName: username,
      password: password,
     };
+
+
     dispatch(getUserByUserNameandPassWord(userLogin)).then(() => {
       console.log("userStatus:", userStatus);
       console.log("user:", user);
@@ -46,6 +48,7 @@ const LogInPage = () => {
       console.log("userStatus:", userStatus);
       console.log("user:", user);
     });
+
   };
 
   useEffect(() => {
@@ -62,12 +65,15 @@ const LogInPage = () => {
      } else {
       console.log("Invalid username or password") ;
      }
-   } else if(userType === "Client" && logClicked) {
+   }
+   
+   else if(userType === "Client" && logClicked) {
      console.log("Logging in as Client");
      dispatch(FindClientByEmailAndPINCODEClientSlice({email: username, pincode: password}));
      console.log("clientStatus:", clientStatus);
+    //  dispatch(FindClientByEmailAndPINCODEClientSlice({email: username, pincode: password}));
      console.log("client:", client);
-     if(client !== null) {
+     if(client !== null ) {
        console.log("Logging in with:", { username, password });
        console.log("Client:", client);
        navigate("/clientATM"); // Navigate to another page on successful login
@@ -89,7 +95,7 @@ const LogInPage = () => {
     };
     dispatch(FindClientByEmailAndPINCODEClientSlice(clientLogin)).then(() => {
       console.log("clientStatus:", clientStatus);
-       if (client !== null) {
+       if (client !== null && !(client.id <= 0)) {
          console.log("Logging in with:", { username, password });
          console.log("Client:", client);
          navigate("/clientATM"); // Navigate to another page on successful login

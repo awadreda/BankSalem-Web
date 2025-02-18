@@ -88,7 +88,8 @@ export default function SideBar() {
               }}
             >
               <ListItemIcon sx={{ color: 'white', minWidth: 40 }}>
-                {item.icon}
+                {item.icon} 
+                
               </ListItemIcon>
               <ListItemText 
                 primary={item.text}
