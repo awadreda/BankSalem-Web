@@ -20,11 +20,12 @@ import { useAppSelector, useAppDispatch } from "../hooks";
 import Deposite from "../components/TransactionComponets/Deposite";
 import Withdraw from "../components/TransactionComponets/Withdraw";
 import Transfer from "../components/TransactionComponets/Transfer";
-import ShowClientCardFromATM from "../components/ATMComponents/ATMComponents";
+import ShowClientCardFromATM from "../components/ATMComponents/ShowClientCardFromATM";
 import {FindClientByIdClientSlice} from "../features/Clinets/ClinetsSlice";
 import { FindClientByEmailAndPINCODEClientSlice } from "../features/Clinets/ClinetsSlice";
   import {  ClientLogin} from "../Types/types";
 import { useNavigate } from "react-router-dom";
+import ClientLogOut from "../components/LogOut/CLientLogOut";
 
 // Add this sample client data
 // const sampleClient = {
@@ -112,6 +113,7 @@ export default function ATMPage() {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+   
       <Paper
         elevation={3}
         sx={{
@@ -244,6 +246,7 @@ export default function ATMPage() {
           ))}
         </Grid>
       </Paper>
+      <ClientLogOut />  
     </Container>
   );
 }

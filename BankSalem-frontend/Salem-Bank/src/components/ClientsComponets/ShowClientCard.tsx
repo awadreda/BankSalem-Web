@@ -12,11 +12,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import TransactionsMenu from "../TransactionComponets/TransactionsMenu";
 import DeleteClinTableMenue from "./DeleteClinTableMenue";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
+import { FindClientByIdClientSlice } from "../../features/Clinets/ClinetsSlice";
 
 export default function ShowClientCard({ selectedClientID }: { selectedClientID: number }) {
   const [open, setOpen] = React.useState(false);
@@ -26,8 +27,14 @@ export default function ShowClientCard({ selectedClientID }: { selectedClientID:
   const isTablet = useMediaQuery(theme.breakpoints.down("md")); // Added isTablet variable
   
   const Client = useAppSelector((state) =>
-    state.clients.clients.find((client) => client.id === selectedClientID)
-  );
+    state.clients.client);
+  const dispatch = useAppDispatch();
+
+   React.useEffect(() => {
+     dispatch(FindClientByIdClientSlice(selectedClientID))
+     console.log(Client)
+  }, []);
+
 
   const handleClickOpen = () => {
     setOpen(true);

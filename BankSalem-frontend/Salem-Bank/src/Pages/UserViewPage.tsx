@@ -1,6 +1,6 @@
 import SideBar from "../components/HomePageComponents/SideBar";
 
-import Header from "../components/ClientsComponets/header";
+import Header from "../components/HomePageComponents/header";
 import { Routes, Route } from 'react-router-dom';
 import Dashboard from "./Dashboard";
 import ClientsBord from "./ClientsBord";
@@ -9,8 +9,22 @@ import LogsBord from "./LogsBord";
 import AdminBord from "./AdminBord";
 import ATMPage from "./ATMPage";
 import LogOutDialog from "../components/LogOut/LogOut";
+  import { useNavigate } from 'react-router-dom';
+    import{useEffect} from 'react';
 
 const UserViewPage = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    
+   const userId = localStorage.getItem("currentUserID");
+
+   if(userId == null) {
+    navigate("/");
+  }
+  }, []);
+
   return (
     <div
       className="main-container"

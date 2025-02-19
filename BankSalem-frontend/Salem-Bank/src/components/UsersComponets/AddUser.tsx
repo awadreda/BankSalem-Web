@@ -9,8 +9,8 @@ import { User } from "../../Types/types";
 import { createUser, getAllUsers } from "../../features/Users/UsersSlice";
 import { useAppDispatch } from "../../hooks";
 import { Card, CardContent, Typography, Box } from "@mui/material";
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import MenuItem from '@mui/material/MenuItem';
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function AddUser() {
   const dispatch = useAppDispatch();
@@ -36,8 +36,8 @@ export default function AddUser() {
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    
-    if (name === 'permission') {
+
+    if (name === "permission") {
       const numValue = parseInt(value);
       if (isNaN(numValue) || numValue < 1 || numValue > 3) {
         // Only allow valid numbers between 1-3 for permission
@@ -148,7 +148,9 @@ export default function AddUser() {
             label="Username"
             name="userName"
             value={user.userName}
-            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(event) =>
+              handleChange(event as React.ChangeEvent<HTMLInputElement>)
+            }
             fullWidth
             margin="normal"
             required
@@ -158,7 +160,9 @@ export default function AddUser() {
             name="password"
             type="password"
             value={user.password}
-            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(event) =>
+              handleChange(event as React.ChangeEvent<HTMLInputElement>)
+            }
             fullWidth
             margin="normal"
             required
@@ -168,22 +172,23 @@ export default function AddUser() {
             label="Permission Level"
             name="permission"
             value={user.permission}
-            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(event) =>
+              handleChange(event as React.ChangeEvent<HTMLInputElement>)
+            }
             fullWidth
             margin="normal"
             required
-
-
           >
-            <MenuItem value={1}>User</MenuItem>
-            <MenuItem value={2}>Admin</MenuItem>
-            <MenuItem value={3}>Super Admin</MenuItem>
+            <MenuItem value={1}>Admin</MenuItem>
+            <MenuItem value={2}>Teller</MenuItem>
           </TextField>
           <TextField
             label="First Name"
             name="firstName"
             value={user.firstName}
-            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(event) =>
+              handleChange(event as React.ChangeEvent<HTMLInputElement>)
+            }
             fullWidth
             margin="normal"
           />
@@ -191,7 +196,9 @@ export default function AddUser() {
             label="Last Name"
             name="lastName"
             value={user.lastName}
-            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(event) =>
+              handleChange(event as React.ChangeEvent<HTMLInputElement>)
+            }
             fullWidth
             margin="normal"
           />
@@ -200,7 +207,9 @@ export default function AddUser() {
             name="email"
             type="email"
             value={user.email}
-            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(event) =>
+              handleChange(event as React.ChangeEvent<HTMLInputElement>)
+            }
             fullWidth
             margin="normal"
           />
@@ -208,7 +217,9 @@ export default function AddUser() {
             label="Phone"
             name="phone"
             value={user.phone}
-            onChange={(event) => handleChange(event as React.ChangeEvent<HTMLInputElement>)}
+            onChange={(event) =>
+              handleChange(event as React.ChangeEvent<HTMLInputElement>)
+            }
             fullWidth
             margin="normal"
           />

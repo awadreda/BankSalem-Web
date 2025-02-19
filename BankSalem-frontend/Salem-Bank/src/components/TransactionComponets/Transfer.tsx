@@ -27,8 +27,8 @@ export default function Transfer({
   const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
   const Client = useAppSelector((state) =>
-    state.clients.clients.find((client) => client.id === selectedClientID)
-  );
+    state.clients.client);
+
   const CurrentClient = useAppSelector((state) =>
     state.clients.CurrentClient
   );

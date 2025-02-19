@@ -135,7 +135,7 @@ export default function AdminBord() {
       >
         Admin Dashboard
       </Typography>
-
+{/* 
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={6} md={4}>
           <Card sx={{ bgcolor: "#EFF6FF", height: "100%" }}>
@@ -201,7 +201,7 @@ export default function AdminBord() {
             </CardContent>
           </Card>
         </Grid>
-      </Grid>
+      </Grid> */}
 
       <Paper
         sx={{

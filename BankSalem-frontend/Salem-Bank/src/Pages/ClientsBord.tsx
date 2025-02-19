@@ -24,6 +24,12 @@ export default function ClientsBord() {
       dispatch(fetchClients());
     }
 
+   
+  }, []);
+
+
+  useEffect(() => {
+    console.log("clients", clients);
     if (clients.length > 0) {
       const totalBalance = clients.reduce(
         (sum, client) => sum + client.accountBalance,
@@ -35,7 +41,7 @@ export default function ClientsBord() {
         averageBalance: totalBalance / clients.length,
       });
     }
-  }, []);
+  }, [clients]);
 
   return (
     <div style={{ padding: "24px" }}>
@@ -71,7 +77,7 @@ export default function ClientsBord() {
         <Grid item xs={12} sm={6} md={4}>
           <Card sx={{ bgcolor: "#ECFDF5", height: "100%" }}>
             <CardContent>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ display: "flex", alignItems: "center"  }}>
                 <AccountBalanceWalletIcon
                   sx={{ color: "#059669", mr: 2, fontSize: 40 }}
                 />

@@ -28,8 +28,9 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
     setOpen(true);
     dispatch(FindClientByIdClientSlice(selectedClientID));
   };
-
+  
   const handleClose = () => {
+    dispatch(FindClientByIdClientSlice(selectedClientID));
     setOpen(false);
   };
 

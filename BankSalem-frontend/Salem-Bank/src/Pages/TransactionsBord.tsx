@@ -37,27 +37,35 @@ export default function TransactionsBord() {
  const theme = useTheme();
  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 //  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-  const TransactionsItems = state.transactions;
-  console.log("TransactionsItems from TransactionsBord : ", TransactionsItems);
+  const mockTransactions = state.transactions;
+  console.log("TransactionsItems from TransactionsBord : ", mockTransactions);
   
   useEffect(() => {
     // Fetch transactions from API
+    console.log("TransactionsItems from TransactionsBord : ", mockTransactions);
     dispatch(fetchTransactionsSlice());
 
-    let mockTransactions = TransactionsItems;
-    setTransactions(mockTransactions);
+    // let mockTransactions = TransactionsItems;
+    // setTransactions(mockTransactions);
 
-    // Calculate statistics
-    const deposits = mockTransactions.filter(t => t.transActionTypeName === 'deposit').reduce((sum, t) => sum + t.amount, 0);
-    const withdrawals = mockTransactions.filter(t => t.transActionTypeName === 'withdrawal').reduce((sum, t) => sum + t.amount, 0);
-    const transfers = mockTransactions.filter(t => t.transActionTypeName === 'transfer').reduce((sum, t) => sum + t.amount, 0);
+   
+  }, [dispatch]);
 
-    setStats({
-      totalDeposits: deposits,
-      totalWithdrawals: withdrawals,
-      totalTransfers: transfers
-    });
-  }, []);
+  useEffect(() => {
+    console.log("TransactionsItems from TransactionsBord : ", mockTransactions); 
+     // Calculate statistics
+     const deposits = mockTransactions.filter(t => t.transActionTypeName === 'Deposit').reduce((sum, t) => sum + t.amount, 0);
+     const withdrawals = mockTransactions.filter(t => t.transActionTypeName === 'WithDraw').reduce((sum, t) => sum + t.amount, 0);
+     const transfers = mockTransactions.filter(t => t.transActionTypeName === 'Transfer').reduce((sum, t) => sum + t.amount, 0);
+ 
+     setStats({
+       totalDeposits: deposits,
+       totalWithdrawals: withdrawals,
+       totalTransfers: transfers
+     });
+      
+  }, [ mockTransactions]);
+
 
   return (
     <div style={{ padding: '24px' }}>
@@ -131,7 +139,7 @@ export default function TransactionsBord() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {transactions.map((transaction) => (
+            {mockTransactions.map((transaction) => (
               <TableRow key={transaction.transActionID}>
                 {isMobile ? (
                   <>
