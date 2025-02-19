@@ -1,0 +1,16 @@
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\bin\Release\net8.0\BankbusinessLayer.deps.json
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\bin\Release\net8.0\BankbusinessLayer.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\bin\Release\net8.0\BankbusinessLayer.pdb
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\bin\Release\net8.0\BankSalemDataAccessLayer.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\bin\Release\net8.0\BankSalemDataAccessLayer.pdb
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.csproj.AssemblyReference.cache
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.AssemblyInfoInputs.cache
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.AssemblyInfo.cs
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.csproj.CoreCompileInputs.cache
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.sourcelink.json
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\Bankbusi.72B28644.Up2Date
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\refint\BankbusinessLayer.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\BankbusinessLayer.pdb
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankbusinessLayer\obj\Release\net8.0\ref\BankbusinessLayer.dll

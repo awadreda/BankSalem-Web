@@ -1,0 +1,17 @@
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankWepAPI.exe
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\appsettings.Development.json
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\appsettings.json
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankWepAPI.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankWepAPI.deps.json
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankWepAPI.runtimeconfig.json
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankWepAPI.pdb
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\Microsoft.OpenApi.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\Swashbuckle.AspNetCore.Swagger.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\System.Data.SqlClient.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\sni.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankbusinessLayer.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankSalemDataAccessLayer.dll
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankbusinessLayer.pdb
+C:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\publish\BankSalemDataAccessLayer.pdb

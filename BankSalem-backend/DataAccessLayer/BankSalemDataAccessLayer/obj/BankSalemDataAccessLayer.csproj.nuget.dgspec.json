@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj": {}
+    "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj": {}
   },
   "projects": {
-    "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj": {
+    "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj",
+        "projectUniqueName": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj",
         "projectName": "BankSalemDataAccessLayer",
-        "projectPath": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj",
+        "projectPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj",
         "packagesPath": "C:\\Users\\Alsayad Electronics\\.nuget\\packages\\",
-        "outputPath": "c:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\obj\\",
+        "outputPath": "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alsayad Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -69,6 +69,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x86": {
+          "#import": []
         }
       }
     }
