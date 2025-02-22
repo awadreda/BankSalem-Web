@@ -13,7 +13,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import { useAppSelector, useAppDispatch } from "../../hooks";
-import TransactionsMenu from "../TransactionComponets/TransactionsMenu";
+// import TransactionsMenu from "../TransactionComponets/TransactionsMenu";
 import { FindClientByIdClientSlice } from "../../features/Clinets/ClinetsSlice";
 
 export default function ShowClientCardFromATM({

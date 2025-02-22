@@ -1,28 +1,28 @@
 // import ClientsTable from "../components/ClientsComponets/ClientsTable";
 // import TransList from "../components/TransactionComponets/TransList";
 
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import {
   Box,
   Grid,
   Card,
   CardContent,
   Typography,
-  Paper,
+  // Paper,
   Divider,
 } from "@mui/material";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+// import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import PeopleIcon from "@mui/icons-material/People";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import { useTheme, useMediaQuery } from "@mui/material";
+// import { useTheme } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { fetchClients } from "../features/Clinets/ClinetsSlice";
 import { fetchTransactionsSlice } from "../features/Transactions/TransSlice";
 
 const Dashboard = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  // const theme = useTheme();
+  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const totalClients = useAppSelector((state) => state.clients.clients.length);
   const totalBalance = useAppSelector((state) =>
     state.clients.clients.reduce(
@@ -40,6 +40,7 @@ const Dashboard = () => {
     // Fetch clients and transactions data
     dispatch(fetchClients());
     dispatch(fetchTransactionsSlice());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

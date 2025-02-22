@@ -56,6 +56,7 @@ const columns: Column[] = [
 ];
 
 // Sample client data remains the same
+// @ts-ignore
 const clientsSample: Client[] = [
   // ... previous sample data
 ];

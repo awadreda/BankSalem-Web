@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyBankProjectConsoleForWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b100eaf8a8fa536aa40d65b6c99047fe2b8c15a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e4fc1d07c740d99a8076ed2acc8017668d326c6")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyBankProjectConsoleForWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyBankProjectConsoleForWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -2,7 +2,7 @@ import axios from "axios";
 import { Deposit_WithDraw_Request, TransferRequest } from "../Types/types";
 
 const api = axios.create({
-  baseURL: `http://localhost:5225/api`, // Use the proxy
+  baseURL: `https://banksalem.somee.com/api`, // Use the proxy
   headers: {
     "Content-Type": "application/json",
     Accept: "text/plain",

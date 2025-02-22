@@ -21,8 +21,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNugetPackages": {},
-          "C:\\Packages\\nuget\\nuget.packaging.6.11.1.nupkg": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -68,11 +66,6 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
-        }
       }
     },
     "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankSalemDataAccessLayer\\BankSalemDataAccessLayer.csproj": {
@@ -92,8 +85,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNugetPackages": {},
-          "C:\\Packages\\nuget\\nuget.packaging.6.11.1.nupkg": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -141,11 +132,6 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
         }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
-        }
       }
     },
     "C:\\AwadDev\\WebDev\\FullStack\\Projects\\BankSalemWepProject\\BankSalem-backend\\DataAccessLayer\\BankWepAPI\\BankWepAPI.csproj": {
@@ -165,8 +151,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\LocalNugetPackages": {},
-          "C:\\Packages\\nuget\\nuget.packaging.6.11.1.nupkg": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -220,11 +204,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x86": {
-          "#import": []
         }
       }
     }

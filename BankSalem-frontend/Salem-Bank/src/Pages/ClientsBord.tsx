@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { Grid, Card, CardContent, Typography, Box } from "@mui/material";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
@@ -6,7 +6,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { fetchClients } from "../features/Clinets/ClinetsSlice";
 import ClientTable from "../components/ClientsComponets/ClientsTable";
-import IconEditClient from "../components/ClientsComponets/ClientsCardsList/iconEditClient";
+// import IconEditClient from "../components/ClientsComponets/ClientsCardsList/iconEditClient";
 
 export default function ClientsBord() {
   const dispatch = useAppDispatch();

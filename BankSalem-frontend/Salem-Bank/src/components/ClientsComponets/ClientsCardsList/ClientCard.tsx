@@ -4,13 +4,13 @@ import {
   Grid,
   Typography,
   Box,
-  IconButton,
+  // IconButton,
 } from "@mui/material";
 import { Client } from "../ClientsTable";
 import ShowClientCard from "../ShowClientCard";
 import EditFromCLientTableIConForMobile from "./iconEditClient";
-import TransactionIcon from "@mui/icons-material/AccountBalance";
-import DeleteIcon from "@mui/icons-material/Delete";
+// import TransactionIcon from "@mui/icons-material/AccountBalance";
+// import DeleteIcon from "@mui/icons-material/Delete";
 import TransactionsMenu from "../../TransactionComponets/TransactionsMenu";
 
 export default function ClientCard({ client }: { client: Client }) {

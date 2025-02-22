@@ -1,4 +1,4 @@
-import SideBar from "./SideBar";
+// import SideBar from "./SideBar";
 import { Box, Typography } from "@mui/material";
 
 export default function Header() {

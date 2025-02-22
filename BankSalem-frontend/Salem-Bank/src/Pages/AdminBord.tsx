@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import React, { useState, useEffect } from "react";
 import {
   Paper,
-  Grid,
-  Card,
-  CardContent,
+ 
   Typography,
   Box,
   Table,
@@ -14,16 +14,10 @@ import {
   TableRow,
   TablePagination,
   useTheme,
-  useMediaQuery,
-  IconButton,
-  Button,
+  useMediaQuery
+ 
 } from "@mui/material";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import SecurityIcon from "@mui/icons-material/Security";
-import GroupIcon from "@mui/icons-material/Group";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddIcon from "@mui/icons-material/Add";
+
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { getAllUsers } from "../features/Users/UsersSlice";
 import AddUser from "../components/UsersComponets/AddUser";
@@ -35,15 +29,17 @@ import { useNavigate } from "react-router-dom";
 export default function AdminBord() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  // @ts-ignore
   const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+  // @ts-ignore
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const dispatch = useAppDispatch();
   const stateUsers = useAppSelector((state) => state.users);
 
   const users = stateUsers?.users || [];
-  const status = stateUsers?.status;
-  const error = stateUsers?.error;
+  // const status = stateUsers?.status;
+  // const error = stateUsers?.error;
   const currentUser = stateUsers?.CurrentUser;
   const navigate = useNavigate();
 
@@ -53,7 +49,7 @@ export default function AdminBord() {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
+  // @ts-ignore
   const [stats, setStats] = useState({
     totalAdmins: 0,
     totalUsers: 0,
@@ -61,10 +57,8 @@ export default function AdminBord() {
   });
 
   useEffect(() => {
-    if(currentUser == null)
-    {
+    if (currentUser == null) {
       navigate("/");
-
     }
 
     refetchUsers();
@@ -80,7 +74,7 @@ export default function AdminBord() {
         superAdmins: users.filter((user) => user.permission === 2).length,
       });
     }
-  }, [  ]);
+  }, []);
 
   const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
@@ -93,6 +87,7 @@ export default function AdminBord() {
     setPage(0);
   };
 
+  // @ts-ignore
   const getPermissionLabel = (permission: number) => {
     switch (permission) {
       case 2:
@@ -102,30 +97,32 @@ export default function AdminBord() {
       default:
         return "User";
     }
-  };  
+  };
 
-  const handleRowClick = (event: React.MouseEvent<HTMLElement>, userId: number) => {
+  const handleRowClick = (
+    event: React.MouseEvent<HTMLElement>,
+    userId: number
+  ) => {
     setAnchorEl(event.currentTarget);
     setSelectedUserId(userId);
   };
-
+  // @ts-ignore
   const handleClose = () => {
     setAnchorEl(null);
     setSelectedUserId(null);
   };
 
-  const handleEdit = (userId: number) => {
-    console.log("Edit user:", userId);
-  };
+  // const handleEdit = (userId: number) => {
+  //   console.log("Edit user:", userId);
+  // };
 
+  // const handleDelete = (userId: number) => {
+  //   console.log("Delete user:", userId);
+  // };
 
-  const handleDelete = (userId: number) => {
-    console.log("Delete user:", userId);
-  };
-
-  const handleAddUser = () => {
-    console.log("Add new user");
-  };
+  // const handleAddUser = () => {
+  //   console.log("Add new user");
+  // };
 
   return (
     <div style={{ padding: "24px" }}>
@@ -135,7 +132,7 @@ export default function AdminBord() {
       >
         Admin Dashboard
       </Typography>
-{/* 
+      {/* 
       <Grid container spacing={3} sx={{ mb: 4 }}>
         <Grid item xs={12} sm={6} md={4}>
           <Card sx={{ bgcolor: "#EFF6FF", height: "100%" }}>
@@ -288,10 +285,9 @@ export default function AdminBord() {
                       {!isMobile && <TableCell>{user.email}</TableCell>}
                       {!isMobile && <TableCell>{user.phone}</TableCell>}
                       <TableCell>
-
                         <ShowUserProfile selectedUserId={user.user_ID} />
                         <EditUser userId={user.user_ID} onClose={() => {}} />
-                       
+
                         <DeleteUser userId={user.user_ID} onClose={() => {}} />
                       </TableCell>
                     </TableRow>
@@ -309,7 +305,6 @@ export default function AdminBord() {
           onRowsPerPageChange={handleChangeRowsPerPage}
           sx={{ bgcolor: "#F8FAFC" }}
         />
-        
       </Paper>
 
       <Box

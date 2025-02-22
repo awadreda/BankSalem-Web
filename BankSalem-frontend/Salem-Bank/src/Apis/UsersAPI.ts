@@ -3,7 +3,7 @@ import { User } from "../Types/types";
 
 
     const api = axios.create({
-      baseURL: `http://localhost:5225/api`,
+      baseURL: `https://banksalem.somee.com/api`,
       headers: {
         "Content-Type": "application/json",
         accept: "text/plain",

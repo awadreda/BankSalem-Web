@@ -28,10 +28,14 @@ public class Program
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
+        if (builder.Configuration.GetValue<bool>("EnableSwagger"))
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bank API V1");
+                c.RoutePrefix = "swagger"; // Access via /swagger
+            });
         }
 
         // app.UseHttpsRedirection();

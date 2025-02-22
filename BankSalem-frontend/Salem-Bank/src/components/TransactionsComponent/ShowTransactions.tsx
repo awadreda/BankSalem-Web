@@ -12,7 +12,8 @@ import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import { useAppSelector } from "../../hooks";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
-import { Transaction } from "../../Types/types";
+
+// import { Transaction } from "../../Types/types";
 
 export default function ShowTransactionCard({
   selectedTransactionID,

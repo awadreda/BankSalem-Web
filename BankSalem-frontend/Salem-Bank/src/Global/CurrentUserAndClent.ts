@@ -1,8 +1,3 @@
-import { User, Client } from "../Types/types";
-import { useAppSelector, useAppDispatch } from "../hooks";
-import { getUserById } from "../features/Users/UsersSlice";
-import { FindClientByIdClientSlice   } from "../features/Clinets/ClinetsSlice";
-// import { useNavigate } from "react-router-dom";
 
 export const SaveCurrentUserIDINLocalStorage = (userID: number) => {
   localStorage.setItem("currentUserID", userID.toString());

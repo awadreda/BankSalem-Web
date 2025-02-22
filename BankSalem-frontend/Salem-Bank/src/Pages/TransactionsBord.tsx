@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import {
   Paper,
   Table,
@@ -20,12 +20,12 @@ import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import { useAppSelector } from '../hooks';
 import { useAppDispatch } from '../hooks';
-import { Transaction } from '../Types/types';
+// import { Transaction } from '../Types/types';
 import { fetchTransactionsSlice } from '../features/Transactions/TransSlice';
 import ShowTransactionCard from '../components/TransactionsComponent/ShowTransactions'; // Import the ShowTransactionCard component
 
 export default function TransactionsBord() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  // const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [stats, setStats] = useState({
     totalDeposits: 0,
     totalWithdrawals: 0,
@@ -49,6 +49,7 @@ export default function TransactionsBord() {
     // setTransactions(mockTransactions);
 
    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   useEffect(() => {

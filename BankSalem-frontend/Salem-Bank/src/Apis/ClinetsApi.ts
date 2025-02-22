@@ -2,7 +2,7 @@ import axios from "axios";
 import { Client, ClientLogin } from "../Types/types";
 
 const api = axios.create({
-  baseURL: `http://localhost:5225/api`, // Use the proxy
+  baseURL: `https://banksalem.somee.com/api`, // Use the proxy
   headers: {
     "Content-Type": "application/json",
   },
@@ -26,7 +26,7 @@ export const FindClientByIdApi = async (clientID: number) => {
 };
 
 export const FindClientByEmailAndPINCODEApi = async (clientLogin: ClientLogin) => {
-  const encodedEmail = clientLogin.email.replace(/@/g, "%40");
+  const encodedEmail = clientLogin.email?.replace(/@/g, "%40");
   try {
     const response = await api.get(
       `/Clients/EmailAndPINCODE?Email=${encodedEmail}&PINCODE=${clientLogin.pincode}`,
