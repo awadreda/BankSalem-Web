@@ -163,7 +163,7 @@ const ClinetSlice = createSlice({
         state.state = "loading"; // Set state to loading
       })
       // Handle the fulfilled state for deleting a client
-      .addCase(DeleteClientSliceFuction.fulfilled, (state, action) => {
+      .addCase(DeleteClientSliceFuction.fulfilled, (state) => {
         state.state = "idle"; // Set state to idle
         // console.log("action.payload : ", action.payload); // Log the deleted client data
       })

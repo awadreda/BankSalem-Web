@@ -141,11 +141,11 @@ export default function ClientsTable() {
   };
 
   const handleEdit = (selectedClientID: number) => {
-    // console.log("Edit client:", selectedClientID);
+    console.log("Edit client:", selectedClientID);
   };
 
   const handleDelete = (selectedClientID: number) => {
-    // console.log("Delete client:", selectedClientID);
+    console.log("Delete client:", selectedClientID);
   };
 
   return (

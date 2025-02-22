@@ -40,7 +40,7 @@ export default function ATMPage() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   // const client = sampleClient;
   const client = useAppSelector((state) => state.clients.client);
-  const CurrentClient = useAppSelector((state) => state.clients.CurrentClient);
+  // const CurrentClient = useAppSelector((state) => state.clients.CurrentClient);
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
