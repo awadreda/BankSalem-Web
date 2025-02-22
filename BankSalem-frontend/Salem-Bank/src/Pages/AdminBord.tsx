@@ -62,7 +62,7 @@ export default function AdminBord() {
     }
 
     refetchUsers();
-    console.log("users : ", users);
+    // console.log("users : ", users);
   }, []);
 
   useEffect(() => {
@@ -113,15 +113,15 @@ export default function AdminBord() {
   };
 
   // const handleEdit = (userId: number) => {
-  //   console.log("Edit user:", userId);
+  //   // console.log("Edit user:", userId);
   // };
 
   // const handleDelete = (userId: number) => {
-  //   console.log("Delete user:", userId);
+  //   // console.log("Delete user:", userId);
   // };
 
   // const handleAddUser = () => {
-  //   console.log("Add new user");
+  //   // console.log("Add new user");
   // };
 
   return (

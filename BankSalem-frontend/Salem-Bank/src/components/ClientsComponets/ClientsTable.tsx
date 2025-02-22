@@ -116,8 +116,8 @@ export default function ClientsTable() {
   ) => {
     const rect = event.currentTarget.getBoundingClientRect();
 
-    console.log("Bounding Rect:", rect);
-    console.log("Window ScrollY:", window.scrollY);
+    // console.log("Bounding Rect:", rect);
+    // console.log("Window ScrollY:", window.scrollY);
 
     setAnchorEl({
       element: event.currentTarget, // Ensure the right element is used
@@ -141,11 +141,11 @@ export default function ClientsTable() {
   };
 
   const handleEdit = (selectedClientID: number) => {
-    console.log("Edit client:", selectedClientID);
+    // console.log("Edit client:", selectedClientID);
   };
 
   const handleDelete = (selectedClientID: number) => {
-    console.log("Delete client:", selectedClientID);
+    // console.log("Delete client:", selectedClientID);
   };
 
   return (

@@ -3,6 +3,7 @@ import ClientsReducer from "../features/Clinets/ClinetsSlice";
 import TransactionsReducer from "../features/Transactions/TransSlice";
 import UsersReducer from "../features/Users/UsersSlice";
 import LogsReducer from "../features/Logs/LogsSlice";
+
 const store = configureStore({
   reducer: {
     clients: ClientsReducer,
@@ -11,6 +12,9 @@ const store = configureStore({
     logs: LogsReducer,
   },
 });
+
+// console.log("Store configured successfully"); // Commented out for debugging
+// console.error("Error configuring store"); // Error message remains uncommented
 
 export type RootState = ReturnType<typeof store.getState>;
 

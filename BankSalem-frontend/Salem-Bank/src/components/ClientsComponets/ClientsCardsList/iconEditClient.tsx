@@ -29,7 +29,6 @@ export default function EditFromCLientTableIConForMobile({
 
   const handleClickOpen = () => {
     dispatch(FindClientByIdClientSlice(ClientId));
-
     setOpen(true);
   };
 
@@ -56,7 +55,8 @@ export default function EditFromCLientTableIConForMobile({
     if (open && ClientData) {
       setClient(ClientData);
     }
-    console.log("From the component edit ixon useEffect ", ClientData);
+    // Commented out console.log
+    // console.log("From the component edit ixon useEffect ", ClientData);
   }, [ClientData, open]);
 
   return (
@@ -80,8 +80,9 @@ export default function EditFromCLientTableIConForMobile({
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const formJson = Object.fromEntries((formData as any).entries());
             const email = formJson.email;
-            console.log("fromSumbet : ", email);
-            console.log(email);
+            // Commented out console.log
+            // console.log("fromSumbet : ", email);
+            // console.log(email);
             handleClose();
           },
         }}

@@ -10,7 +10,6 @@ import {
   Radio,
   RadioGroup,
   FormControlLabel,
-  // IconButton,
   InputAdornment,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -56,7 +55,7 @@ const LogInPage = () => {
     const userLogin: UserLogin = { userName: username, password: password };
     dispatch(getUserByUserNameandPassWord(userLogin)).then(() => {
       if (user !== null) {
-        console.log("Logging in with:", { username, password });
+        // console.log("Logging in with:", { username, password });
         navigate("/dashboard");
       } else {
         console.log("Invalid username or password");

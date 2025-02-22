@@ -25,11 +25,12 @@ export default function DeleteClinTableMenue({
   const isMobile = useMediaQuery(theme.breakpoints.down("sm")); 
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
-
   const handleDelete = () => {
     dispatch(DeleteClientSliceFuction(ClientID)).then(() => {
-        dispatch(fetchClients()); })
-      ;
+        dispatch(fetchClients());
+    }).catch(error => {
+        console.error("Error deleting client:", error);
+    });
   }
 
   const handleClickOpen = () => {
@@ -42,7 +43,6 @@ export default function DeleteClinTableMenue({
 
   return (
     <React.Fragment>
-    
       {isMobile || isTablet ? (
         <IconButton
           sx={{ color: "#DC2626", "&:hover": { backgroundColor: "#FEF2F2" } }}
@@ -56,9 +56,9 @@ export default function DeleteClinTableMenue({
           onClick={() => {
             handleClickOpen();
           }}
-      >
-        Delete
-      </Button>
+        >
+          Delete
+        </Button>
       )}
       
       <Dialog
@@ -91,8 +91,7 @@ export default function DeleteClinTableMenue({
               onClose();
               handleDelete();
             }}
-           color="error"
-
+            color="error"
           >
             Delete
           </Button>

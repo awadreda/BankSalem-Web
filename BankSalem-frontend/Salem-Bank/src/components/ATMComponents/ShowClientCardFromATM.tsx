@@ -31,13 +31,12 @@ export default function ShowClientCardFromATM({
 
   React.useEffect(() => {
     dispatch(FindClientByIdClientSlice(selectedClientID));
-    console.log("from UseEffect SHow ClientCard ATM", Client);
+    // console.log("from UseEffect SHow ClientCard ATM", Client);
   }, [open]);
 
   const handleClickOpen = () => {
     setOpen(true);
     dispatch(FindClientByIdClientSlice(selectedClientID));
-
   };
 
   const handleClose = () => {
@@ -103,7 +102,6 @@ export default function ShowClientCardFromATM({
                     display: "flex",
                     alignItems: "center",
                     marginBottom: "16px",
-               
                   }}
                 >
                   <EmailIcon sx={{ color: "#1976d2", marginRight: "12px" }} />

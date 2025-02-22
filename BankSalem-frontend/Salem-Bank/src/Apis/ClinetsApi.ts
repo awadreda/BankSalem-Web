@@ -20,7 +20,6 @@ export const FindClientByIdApi = async (clientID: number) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching clients:", error);
-
     throw error;
   }
 };
@@ -39,15 +38,12 @@ export const FindClientByEmailAndPINCODEApi = async (clientLogin: ClientLogin) =
     );
     
     return response.data;
-    console.log("response from ClinetsApi", response.data);
+    // console.log("response from ClinetsApi", response.data);
   } catch (error) {
     console.error("Error fetching client by email and PINCODE:", error);  
     throw error;
   }
 };
-
-
-
 
 export const getClients = async () => {
   try {
@@ -73,7 +69,7 @@ export const addNewClient = async (client: Client) => {
       },
     });
 
-    console.log(response);
+    // console.log(response);
     return response;
   } catch (error) {
     console.error("Error adding new client:", error);
@@ -91,7 +87,7 @@ export const DeleteClientApi = async (ClientID: number) => {
         Accept: "text/plain",
       },
     });
-    console.log(response);
+    // console.log(response);
     return response;
   } catch (error) {
     console.error("Error deleting client:", error);
@@ -99,7 +95,7 @@ export const DeleteClientApi = async (ClientID: number) => {
   }
 };
 
-export  const UpdateClientApi = async (client: Client) => {
+export const UpdateClientApi = async (client: Client) => {
   try {
     const response = await api.put(`/Clients/${client.id}`, client, {
       headers: {
@@ -107,7 +103,7 @@ export  const UpdateClientApi = async (client: Client) => {
         Accept: "text/plain",
       },
     });
-    console.log(response);
+    // console.log(response);
     return response;
   } catch (error) {
     console.error("Error updating client:", error);

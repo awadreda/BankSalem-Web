@@ -39,7 +39,7 @@ export const FindClientByIdClientSlice = createAsyncThunk(
   "clients/FindClientByIdClientSlice",
   async (clientID: number) => {
     const response = await FindClientByIdApi(clientID);
-    console.log("response from ClinetSlice", response);
+    // console.log("response from ClinetSlice", response);
     return response;
   }
 );
@@ -48,7 +48,7 @@ export const FindClientByEmailAndPINCODEClientSlice = createAsyncThunk(
   "clients/FindClientByEmailAndPINCODEClientSlice",
   async (clientLogin: ClientLogin) => {
     const response = await FindClientByEmailAndPINCODEApi(clientLogin);
-    console.log("response from ClinetSlice", response);
+    // console.log("response from ClinetSlice", response);
     return response;
   }
 );
@@ -66,7 +66,7 @@ export const addClinet = createAsyncThunk(
   "clients/addClinet",
   async (client: Client) => {
     const response = await addNewClient(client);
-    console.log("response from ClinetSlice", response);
+    // console.log("response from ClinetSlice", response);
     return response.data;
   }
 );
@@ -76,7 +76,7 @@ export const DeleteClientSliceFuction = createAsyncThunk(
   async (ClientID: number) => {
     const response = await DeleteClientApi(ClientID);
 
-    console.log("response from ClinetSlice", response);
+    // console.log("response from ClinetSlice", response);
     return response.data;
   }
 );
@@ -85,7 +85,7 @@ export const UpdateClientSlice = createAsyncThunk(
   "clients/UpdateClientSlice",
   async (client: Client) => {
     const response = await UpdateClientApi(client);
-    console.log("response from ClinetSlice", response);
+    // console.log("response from ClinetSlice", response);
     return response.data;
   }
 );
@@ -106,7 +106,7 @@ const ClinetSlice = createSlice({
         state.state = "idle"; // Set state to idle
         state.client = action.payload; // Store the fetched client data
 
-        console.log("action.payload : ", action.payload); // Log the fetched client data
+        // console.log("action.payload : ", action.payload); // Log the fetched client data
       })
       // Handle the rejected state for finding a client by ID
       .addCase(FindClientByIdClientSlice.rejected, (state, action) => {
@@ -150,7 +150,7 @@ const ClinetSlice = createSlice({
       // Handle the fulfilled state for adding a new client
       .addCase(addClinet.fulfilled, (state, action) => {
         state.state = "idle"; // Set state to idle
-        console.log("action.payload : ", action.payload); // Log the added client data
+        // console.log("action.payload : ", action.payload); // Log the added client data
         state.client = action.payload; // Store the added client data
       })
       // Handle the rejected state for adding a new client
@@ -165,7 +165,7 @@ const ClinetSlice = createSlice({
       // Handle the fulfilled state for deleting a client
       .addCase(DeleteClientSliceFuction.fulfilled, (state, action) => {
         state.state = "idle"; // Set state to idle
-        console.log("action.payload : ", action.payload); // Log the deleted client data
+        // console.log("action.payload : ", action.payload); // Log the deleted client data
       })
       // Handle the rejected state for deleting a client
       .addCase(DeleteClientSliceFuction.rejected, (state, action) => {
@@ -180,7 +180,7 @@ const ClinetSlice = createSlice({
       .addCase(UpdateClientSlice.fulfilled, (state, action) => {
         state.state = "idle"; // Set state to idle
         state.client = action.payload; // Store the updated client data
-        console.log("action.payload : ", action.payload); // Log the updated client data
+        // console.log("action.payload : ", action.payload); // Log the updated client data
       })
       // Handle the rejected state for updating a client
       .addCase(UpdateClientSlice.rejected, (state, action) => {

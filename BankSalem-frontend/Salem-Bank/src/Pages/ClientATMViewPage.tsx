@@ -23,7 +23,7 @@ import Transfer from "../components/TransactionComponets/Transfer";
 import ShowClientCardFromATM from "../components/ATMComponents/ShowClientCardFromATM";
 import {FindClientByIdClientSlice} from "../features/Clinets/ClinetsSlice";
 import { FindClientByEmailAndPINCODEClientSlice } from "../features/Clinets/ClinetsSlice";
-  import {  ClientLogin} from "../Types/types";
+import { ClientLogin} from "../Types/types";
 import { useNavigate } from "react-router-dom";
 import ClientLogOut from "../components/LogOut/CLientLogOut";
 
@@ -45,35 +45,26 @@ export default function ATMPage() {
 
   const dispatch = useAppDispatch();
   const [clientIdFormLoaclStorage, setClientIdFormLoaclStorage] = useState<number>(0);  
- 
 
   useEffect(() => {
-    
     const clientId = localStorage.getItem("currentClientID");
     if (clientId !== null) {
       const parsedClientId = parseInt(clientId);
       setClientIdFormLoaclStorage(parsedClientId);
       dispatch(FindClientByIdClientSlice(parsedClientId));
-      console.log(parsedClientId);
-      console.log(client);
-
-          }  
-          else{
-           navigate("/");
-          }
+      // console.log(parsedClientId);
+      // console.log(client);
+    } else {
+      navigate("/");
+    }
   }, [clientIdFormLoaclStorage]);
 
-
   useEffect(() => {
-
-   
-      dispatch(FindClientByEmailAndPINCODEClientSlice({
-        email: client?.email,
-        pincode: client?.pincode
-      } as ClientLogin));     
-      console.log("from useEffect ATM currentClient:", CurrentClient);
-    
-    
+    dispatch(FindClientByEmailAndPINCODEClientSlice({
+      email: client?.email,
+      pincode: client?.pincode
+    } as ClientLogin));     
+    // console.log("from useEffect ATM currentClient:", CurrentClient);
   }, [client]);
 
   const ATMOptions = [
@@ -109,11 +100,8 @@ export default function ATMPage() {
     },
   ];
 
-
-
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-   
       <Paper
         elevation={3}
         sx={{
@@ -204,7 +192,6 @@ export default function ATMPage() {
           {ATMOptions.map((option, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card
-                
                 sx={{
                   bgcolor: option.bgColor,
                   height: "100%",

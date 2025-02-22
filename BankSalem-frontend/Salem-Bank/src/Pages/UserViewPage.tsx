@@ -9,8 +9,8 @@ import LogsBord from "./LogsBord";
 import AdminBord from "./AdminBord";
 import ATMPage from "./ATMPage";
 import LogOutDialog from "../components/LogOut/LogOut";
-  import { useNavigate } from 'react-router-dom';
-    import{useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const UserViewPage = () => {
 
@@ -22,41 +22,42 @@ const UserViewPage = () => {
 
    if(userId == null) {
     navigate("/");
-  }
+   } else {
+    // console.log("User ID found:", userId);
+   }
   }, []);
 
   return (
     <div
       className="main-container"
-  style={{
-    margin: "0 auto",
-    display: "flex",
-    width: "100%",
-    backgroundColor: "#F0F4F8",
-  }}
->
-  <SideBar />
-  <div
-    style={{
-      flex: 1,
-      padding: "16px",
-      backgroundColor: "#FFFFFF",
-      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-    }}
-  >
-    <Header />
-    <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/clients" element={<ClientsBord />} />
-      <Route path="/transactions" element={<TransactionsBord />} />
-      <Route path="/logs" element={<LogsBord />} />
-      <Route path="/admin" element={<AdminBord />} />
-
-      <Route path="/atm" element={<ATMPage />} />
-      <Route path="/logout" element={<LogOutDialog />} />
-    </Routes>
-  </div>
-  </div>
+      style={{
+        margin: "0 auto",
+        display: "flex",
+        width: "100%",
+        backgroundColor: "#F0F4F8",
+      }}
+    >
+      <SideBar />
+      <div
+        style={{
+          flex: 1,
+          padding: "16px",
+          backgroundColor: "#FFFFFF",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Header />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/clients" element={<ClientsBord />} />
+          <Route path="/transactions" element={<TransactionsBord />} />
+          <Route path="/logs" element={<LogsBord />} />
+          <Route path="/admin" element={<AdminBord />} />
+          <Route path="/atm" element={<ATMPage />} />
+          <Route path="/logout" element={<LogOutDialog />} />
+        </Routes>
+      </div>
+    </div>
   );
 };
 

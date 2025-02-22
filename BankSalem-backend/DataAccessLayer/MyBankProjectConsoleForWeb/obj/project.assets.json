@@ -525,8 +525,6 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\LocalNugetPackages": {},
-        "C:\\Packages\\nuget\\nuget.packaging.6.11.1.nupkg": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },

@@ -152,10 +152,9 @@ setPage(0);
 useEffect(() => {
 if (transactions.state === "idle") {
 dispatch(fetchTransactionsSlice());
-console.log("transactions", transactions);
-
+// console.log("transactions", transactions); // Commented out as per instructions
 }     else if (transactions.state === "loading") {
-console.log("Loading...");
+// console.log("Loading..."); // Commented out as per instructions
 } else if (transactions.state === "failed") {
 console.log("Failed to fetch transactions");
 }

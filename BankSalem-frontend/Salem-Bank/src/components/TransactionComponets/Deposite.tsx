@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import {  FindClientByIdClientSlice } from "../../features/Clinets/ClinetsSlice";
+import { FindClientByIdClientSlice } from "../../features/Clinets/ClinetsSlice";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Avatar from '@mui/material/Avatar';
 import PersonIcon from '@mui/icons-material/Person';
@@ -21,9 +21,6 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
   const Client = useAppSelector((state) => state.clients.client);
   const CurrentClient = useAppSelector((state) => state.clients.CurrentClient);
 
-  
-
-
   const handleClickOpen = () => {
     setOpen(true);
     dispatch(FindClientByIdClientSlice(selectedClientID));
@@ -33,13 +30,6 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
     dispatch(FindClientByIdClientSlice(selectedClientID));
     setOpen(false);
   };
-
-
-
-
-
-
-
 
   return (
     <React.Fragment>
@@ -62,9 +52,8 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
             };
             dispatch(DepositeSlice(depositRequest));
             dispatch(fetchClients());
-            console.log(depositRequest);
+            // console.log(depositRequest); // Commented out as per instructions
             handleClose();
-
           },
         }}
       >

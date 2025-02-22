@@ -23,9 +23,9 @@ export default function DeleteUser({
   const dispatch = useAppDispatch();
 
   const handleDelete = () => {
-    console.log("userId from deleteUser : ", userId);
+    // console.log("userId from deleteUser : ", userId);
     dispatch(deleteUser(userId)).then(() => {
-      console.log("stateUser from deleteUser : ", stateUser);
+      // console.log("stateUser from deleteUser : ", stateUser);
       dispatch(getAllUsers());
     });
   };

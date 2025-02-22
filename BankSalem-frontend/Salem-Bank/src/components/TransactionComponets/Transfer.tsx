@@ -21,8 +21,6 @@ export default function Transfer({
 }: {
   selectedClientID: number;
   
-
-
 }) {
   const [open, setOpen] = React.useState(false);
   const dispatch = useAppDispatch();
@@ -40,11 +38,7 @@ export default function Transfer({
 
   const handleClose = () => {
     setOpen(false);
-    
   };
-
-
-  
 
   return (
     <React.Fragment>
@@ -64,12 +58,11 @@ export default function Transfer({
               fromClientId: selectedClientID,
               toClientId: Number(formJson.toClientId),
               amount: Number(formJson.amount),
-              
               userId: 1 // TODO: Get actual userId from auth
             };
 
             dispatch(TransFerSclie(transferRequest));
-            console.log(transferRequest);
+            // console.log(transferRequest); // Commented out as per instructions
             handleClose();
           },
         }}

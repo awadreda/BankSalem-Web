@@ -27,59 +27,50 @@ export const getTransactionsApi = async () => {
   }
 };
 
+export const DepositeApi = async (Dreq:Deposit_WithDraw_Request) => { 
+  try {
+    const response = await api.post(`/TrasnActons/Deposite`, Dreq, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "text/plain",
+      },
+    });
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error Deposite:", error);
+    throw error;
+  }
+};
 
+export const WithDrawApi = async (Wreq:Deposit_WithDraw_Request) => { 
+  try {
+    const response = await api.post(`/TrasnActons/withDraw`, Wreq, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "text/plain",
+      },
+    });
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error WithDraw:", error);
+    throw error;
+  }
+};
 
-  export const DepositeApi = async (Dreq:Deposit_WithDraw_Request) => { 
-
-    try {
-      const response = await api.post(`/TrasnActons/Deposite`, Dreq, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "text/plain",
-        },
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error Deposite:", error);
-      throw error;
-    }
-  };
-
-
-  export const WithDrawApi = async (Wreq:Deposit_WithDraw_Request) => { 
-
-    try {
-      const response = await api.post(`/TrasnActons/withDraw`, Wreq, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "text/plain",
-        },
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error WithDraw:", error);
-      throw error;
-    }
-  };
-
-
-  export const TransferApi = async (Treq:TransferRequest) => { 
-
-    try {
-      const response = await api.post(`/TrasnActons/Transfer`, Treq, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "text/plain",
-        },
-      });
-      return response.data;
-    } catch (error) {
-      console.error("Error Transfer:", error);
-      throw error;
-    }
-  };
-
-
-
-
-
+export const TransferApi = async (Treq:TransferRequest) => { 
+  try {
+    const response = await api.post(`/TrasnActons/Transfer`, Treq, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "text/plain",
+      },
+    });
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error Transfer:", error);
+    throw error;
+  }
+};

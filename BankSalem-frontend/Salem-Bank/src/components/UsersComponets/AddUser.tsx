@@ -56,7 +56,7 @@ export default function AddUser() {
   };
 
   const handleAddUserButton = () => {
-    console.log("user from addUser : ", user);
+    // console.log("user from addUser : ", user);
     dispatch(createUser(user)).then(() => {
       dispatch(getAllUsers());
       handleClose();

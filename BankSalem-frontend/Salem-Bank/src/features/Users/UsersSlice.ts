@@ -35,12 +35,9 @@ const initialState: UserState = {
 
 export const getAllUsers = createAsyncThunk("users/getAllUsers", async () => {
   const response = await getAllUsersApi();
-  console.log("response.data from getAllUsers Slice : ", response);
+  // console.log("response.data from getAllUsers Slice : ", response);
   return response;
 });
-
-
-
 
 export const getUserById = createAsyncThunk(
   "users/getUserById",
@@ -66,16 +63,14 @@ export const getUserByUserNameandPassWord = createAsyncThunk(
   }
 );
 
-
 export const createUser = createAsyncThunk(
   "users/createUser",
   async (user: User) => {
     const response = await createUserApi(user);
-    console.log("response.data from createUser Slice : ", response);
+    // console.log("response.data from createUser Slice : ", response);
     return response;
   }
 );
-
 
 export const updateUser = createAsyncThunk(
   "users/updateUser",
@@ -83,14 +78,13 @@ export const updateUser = createAsyncThunk(
     const response = await updateUserApi(user.user_ID, user);
     return response;
   }
-
 );
 
 export const deleteUser = createAsyncThunk(
   "users/deleteUser",
   async (id: number) => {
       const response = await deleteUserApi(id);
-      console.log("response.data from deleteUser Slice : ", response);
+      // console.log("response.data from deleteUser Slice : ", response);
     return response;
   }
 );
@@ -113,8 +107,6 @@ const UsersSlice = createSlice({
         state.error = action.error.message || "failed To Fetch Users";
       })
 
-
-
       // Handle getUserById cases  
       .addCase(getUserById.pending, (state) => {
         state.status = "loading";
@@ -126,7 +118,7 @@ const UsersSlice = createSlice({
       .addCase(getUserById.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "failed To Fetch User";
-        console.log("action.error : ", action.error);
+        // console.log("action.error : ", action.error);
       })
 
       // Handle getCurrentUserByID cases
@@ -140,10 +132,9 @@ const UsersSlice = createSlice({
       .addCase(getCurrentUserByID.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "failed To Fetch User";
-        console.log("action.error : ", action.error);
+        // console.log("action.error : ", action.error);
       })  
         
-
       // Handle getUserByUserNameandPassWord cases
       .addCase(getUserByUserNameandPassWord.pending, (state) => {
         state.status = "loading";
@@ -155,9 +146,8 @@ const UsersSlice = createSlice({
       .addCase(getUserByUserNameandPassWord.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "failed To Fetch User";
-        console.log("action.error : ", action.error);
+        // console.log("action.error : ", action.error);
       })
-
 
       // Handle createUser cases
       .addCase(createUser.pending, (state) => {
@@ -168,11 +158,10 @@ const UsersSlice = createSlice({
         state.user = action.payload; // Set newly created user
       })
       .addCase(createUser.rejected, (state, action) => {
-        console.log("action.error : ", action.error);
+        // console.log("action.error : ", action.error);
         state.error = action.error.message || "failed To Create User";
         state.status = "failed";
       })
-
 
       // Handle updateUser cases
       .addCase(updateUser.pending, (state) => {
@@ -183,11 +172,10 @@ const UsersSlice = createSlice({
         state.user = action.payload; // Update user with modified data
       })
       .addCase(updateUser.rejected, (state, action) => {
-        console.log("action.error : ", action.error);
+        // console.log("action.error : ", action.error);
         state.error = action.error.message || "failed To Update User";
         state.status = "failed";
       })
-
 
       // Handle deleteUser cases
       .addCase(deleteUser.pending, (state) => {
@@ -198,15 +186,11 @@ const UsersSlice = createSlice({
         state.user = action.payload; // Clear deleted user data
       })
       .addCase(deleteUser.rejected, (state, action) => {
-        console.log("action.error : ", action.error);
+        // console.log("action.error : ", action.error);
         state.status = "failed";
         state.error = action.error.message || "failed To Delete User";
       });
-
-
   },
 });
-
-
 
 export default UsersSlice.reducer;

@@ -29,7 +29,7 @@ export const fetchTransactionsSlice = createAsyncThunk(
   "Transactions/fetchTransactionsSlice",
   async () => {
     const response = await getTransactionsApi();
-    console.log("response from TransSlice", response);
+    // console.log("response from TransSlice", response);
     return response;
   }
 );
@@ -38,7 +38,7 @@ export const DepositeSlice = createAsyncThunk(
   "Transactions/DepositeSlice",
   async (Dreq: Deposit_WithDraw_Request) => {
     const response = await DepositeApi(Dreq);
-    console.log("response from TransSlice", response);
+    // console.log("response from TransSlice", response);
     return response;
   }
 );
@@ -47,7 +47,7 @@ export const WithDrawSlice = createAsyncThunk(
   "Transactions/WithDrawSlice",
   async (Wreq: Deposit_WithDraw_Request) => {
     const response = await WithDrawApi(Wreq);
-    console.log("response from TransSlice", response);
+    // console.log("response from TransSlice", response);
     return response;
   }
 );
@@ -56,7 +56,7 @@ export const TransFerSclie = createAsyncThunk(
   "Transactions/TransFerSclie",
   async (Treq: TransferRequest) => {
     const response = await TransferApi(Treq);
-    console.log("response from TransSlice", response);
+    // console.log("response from TransSlice", response);
     return response;
   }
 );
@@ -113,7 +113,5 @@ const TransSclie = createSlice({
       });
   },
 });
-
-
 
 export default TransSclie.reducer;

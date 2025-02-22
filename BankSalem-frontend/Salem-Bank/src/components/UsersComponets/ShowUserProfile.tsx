@@ -143,7 +143,7 @@ export default function ShowUserProfile({
           </DialogContentText>
         </DialogContent>
         <DialogActions sx={{ padding: "16px 24px" }}>
-                  <EditUser userId={selectedUserId} onClose={handleClose} />
+          <EditUser userId={selectedUserId} onClose={handleClose} />
           <DeleteUser userId={selectedUserId} onClose={handleClose} />
           <Button
             onClick={handleClose}

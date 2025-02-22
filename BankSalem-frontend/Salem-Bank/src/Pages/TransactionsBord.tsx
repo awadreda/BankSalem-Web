@@ -34,26 +34,20 @@ export default function TransactionsBord() {
 
   const state = useAppSelector((state) => state.Transactions);
   const dispatch = useAppDispatch();
- const theme = useTheme();
- const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-//  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const mockTransactions = state.transactions;
-  console.log("TransactionsItems from TransactionsBord : ", mockTransactions);
+  // console.log("TransactionsItems from TransactionsBord : ", mockTransactions);
   
   useEffect(() => {
     // Fetch transactions from API
-    console.log("TransactionsItems from TransactionsBord : ", mockTransactions);
+    // console.log("TransactionsItems from TransactionsBord : ", mockTransactions);
     dispatch(fetchTransactionsSlice());
-
-    // let mockTransactions = TransactionsItems;
-    // setTransactions(mockTransactions);
-
-   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("TransactionsItems from TransactionsBord : ", mockTransactions); 
+    // console.log("TransactionsItems from TransactionsBord : ", mockTransactions); 
      // Calculate statistics
      const deposits = mockTransactions.filter(t => t.transActionTypeName === 'Deposit').reduce((sum, t) => sum + t.amount, 0);
      const withdrawals = mockTransactions.filter(t => t.transActionTypeName === 'WithDraw').reduce((sum, t) => sum + t.amount, 0);
@@ -66,7 +60,6 @@ export default function TransactionsBord() {
      });
       
   }, [ mockTransactions]);
-
 
   return (
     <div style={{ padding: '24px' }}>

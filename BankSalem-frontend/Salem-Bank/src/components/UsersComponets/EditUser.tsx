@@ -61,6 +61,8 @@ export default function EditUser({
   const handleUpdateUserButton = () => {
     dispatch(updateUser(user)).then(() => {
       dispatch(getAllUsers());
+    }).catch(error => {
+      console.error("Error updating user:", error);
     });
   };
 

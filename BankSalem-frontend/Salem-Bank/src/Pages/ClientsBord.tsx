@@ -24,12 +24,11 @@ export default function ClientsBord() {
       dispatch(fetchClients());
     }
 
-   
   }, []);
 
 
   useEffect(() => {
-    console.log("clients", clients);
+    // console.log("clients", clients);
     if (clients.length > 0) {
       const totalBalance = clients.reduce(
         (sum, client) => sum + client.accountBalance,

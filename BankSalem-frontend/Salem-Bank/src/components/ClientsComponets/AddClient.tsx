@@ -33,7 +33,7 @@ export default function AddClient() {
     setOpen(false);
   };
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setClient((prevClient:Client) => ({
       ...prevClient,
@@ -44,9 +44,9 @@ export default function AddClient() {
   const handleAddClientButton = () => {
     // console.log(client);
     dispatch(addClinet(client)).then(() => {
-    dispatch(fetchClients());});
+      dispatch(fetchClients());
+    });
   };
-
 
   return (
     <React.Fragment>
@@ -68,7 +68,7 @@ export default function AddClient() {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const formJson = Object.fromEntries((formData as any).entries());
             const email = formJson.email;
-            console.log(email);
+            // console.log(email);
             handleClose();
           },
         }}

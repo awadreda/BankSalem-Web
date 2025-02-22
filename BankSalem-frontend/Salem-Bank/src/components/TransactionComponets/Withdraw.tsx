@@ -59,7 +59,7 @@ export default function Withdraw({
               userId: 1 // TODO: Get actual userId from auth
             };
             dispatch(WithDrawSlice(withdrawRequest));
-            console.log(withdrawRequest);
+            // console.log(withdrawRequest); // Commented out as per instructions
             handleClose();
           },
         }}

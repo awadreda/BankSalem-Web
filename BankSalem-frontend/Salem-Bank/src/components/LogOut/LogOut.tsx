@@ -27,7 +27,7 @@ export default function LogOut() {
 
   const handleLogout = () => {
     // Add logout logic here (e.g., clearing user session, redirecting to login page)
-    console.log("User logged out");
+    // console.log("User logged out");
     dispatch(registerLogSlice({
       userID : parseInt(currentUserid || "0"),
       logTypeID : 2

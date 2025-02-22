@@ -31,8 +31,8 @@ export default function ShowClientCard({ selectedClientID }: { selectedClientID:
   const dispatch = useAppDispatch();
 
    React.useEffect(() => {
-     dispatch(FindClientByIdClientSlice(selectedClientID))
-     console.log(Client)
+     dispatch(FindClientByIdClientSlice(selectedClientID));
+     // console.log(Client);
   }, []);
 
 

@@ -8,9 +8,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
 import { RemoveCurrentClientIDFromLocalStorage } from "../../Global/CurrentUserAndClent";
+
 export default function ClientLogOut() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -21,7 +23,7 @@ export default function ClientLogOut() {
 
   const handleLogout = () => {
     // Add logout logic here (e.g., clearing client session, redirecting to login page)
-    console.log("Client logged out");
+    // console.log("Client logged out");
     navigate("/");
     RemoveCurrentClientIDFromLocalStorage();
     handleClose();
@@ -29,27 +31,27 @@ export default function ClientLogOut() {
 
   return (
     <React.Fragment>
-        <div style={{ display: 'flex', alignItems: 'center' ,justifyContent: 'left' }} >
-      <Button
-        variant="outlined"
-        onClick={handleClickOpen}
-        sx={{
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          marginTop: '15px',
-          fontWeight: 'bold',
-          marginLeft: '10px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '8px',
-          padding: '8px 16px',
-          '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            boxShadow: '0px 0px 10px rgba(255, 255, 255, 0.1)',
-          },
-        }}
-      >
-        <LogoutIcon sx={{ marginRight: '8px' }} />
-        Log Out
-      </Button>
+      <div style={{ display: 'flex', alignItems: 'center' ,justifyContent: 'left' }} >
+        <Button
+          variant="outlined"
+          onClick={handleClickOpen}
+          sx={{
+            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            marginTop: '15px',
+            fontWeight: 'bold',
+            marginLeft: '10px',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '8px',
+            padding: '8px 16px',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              boxShadow: '0px 0px 10px rgba(255, 255, 255, 0.1)',
+            },
+          }}
+        >
+          <LogoutIcon sx={{ marginRight: '8px' }} />
+          Log Out
+        </Button>
       </div>
 
       <Dialog
