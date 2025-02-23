@@ -130,12 +130,15 @@ namespace BankWepAPI.Controllers
 
             if (ClientsBusiness.isClientExistbyID(clientID))
             {
-                ClientsBusiness.DeleteClientByID(clientID);
-
-                return Ok($"Client with id {clientID} has been deleted");
+                if(ClientsBusiness.DeleteClientByID(clientID))
+                {
+                    return Ok($"Client with id {clientID} has been deleted");
+                }
+            return NotFound($"Client with id {clientID} not found   ");
             }
 
-            return NotFound($"Client with id {clientID} not found   ");
+            return BadRequest($"Client with id {clientID} has not been deleted");
+
         }
 
         [HttpPut("{clientID}", Name = "UpadateClient")]

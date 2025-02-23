@@ -402,7 +402,10 @@ namespace BankSalemDataAccessLayer
 
                 reader.Close();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
             finally
             {
                 connection.Close();
@@ -646,8 +649,17 @@ namespace BankSalemDataAccessLayer
 
             //  worng  =>    string quary = "delete from Persons where PersonID = (select Clients.PersonID from Clients where ClientID = @Id) ; DELETE FROM clients WHERE ClientID=@Id; ";
 
-            string quaryAfterModfing =
-                @"DELETE FROM Clients WHERE ClientID = @Id; DELETE FROM Persons WHERE PersonID NOT IN (SELECT PersonID FROM Clients) AND PersonID NOT IN (SELECT PersonID FROM Users);";
+            // string quaryAfterModfing =
+            //     @"DELETE FROM Clients WHERE ClientID = @Id; DELETE FROM Persons WHERE PersonID NOT IN (SELECT PersonID FROM Clients) AND PersonID NOT IN (SELECT PersonID FROM Users);";
+
+            string quaryAfterModfing = @"
+                   DELETE FROM TransActionS WHERE ClientID = @Id; 
+                   DELETE FROM Clients WHERE ClientID = @Id; 
+                   DELETE FROM Persons 
+                    WHERE PersonID NOT IN (SELECT PersonID FROM Clients) 
+                    AND PersonID NOT IN (SELECT PersonID FROM Users);
+                   ";
+
 
             SqlCommand command = new SqlCommand(quaryAfterModfing, connection);
             command.Parameters.AddWithValue("@Id", Id);
@@ -658,7 +670,11 @@ namespace BankSalemDataAccessLayer
 
                 RowsAffected = command.ExecuteNonQuery();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
             {
                 connection.Close();
             }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankbusinessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e4fc1d07c740d99a8076ed2acc8017668d326c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a09cc597890aac87d480738cb6713e77212c83e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankbusinessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankbusinessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -41,3 +41,8 @@ c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataA
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\obj\Debug\net8.0\BankWepAPI.genruntimeconfig.cache
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\obj\Debug\net8.0\ref\BankWepAPI.dll
 c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\obj\Debug\net8.0\BankWepAPI.sourcelink.json
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\bin\Debug\net8.0\publish\web.config
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\bin\Debug\net8.0\publish\appsettings.Development.json
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\bin\Debug\net8.0\publish\appsettings.json
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\bin\Debug\net8.0\publish\BankWepAPI.deps.json
+c:\AwadDev\WebDev\FullStack\Projects\BankSalemWepProject\BankSalem-backend\DataAccessLayer\BankWepAPI\bin\Debug\net8.0\publish\BankWepAPI.runtimeconfig.json

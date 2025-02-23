@@ -56,7 +56,9 @@ const columns: Column[] = [
 ];
 
 // Sample client data remains the same
-// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const clientsSample: Client[] = [
   // ... previous sample data
 ];
@@ -77,6 +79,7 @@ export default function ClientsTable() {
 
   const ClientsAPI = useAppSelector((state) => state.clients);
 
+  // eslint-disable-next-line prefer-const
   let clients = useMemo(() => ClientsAPI.clients, [ClientsAPI.clients]);
 
   const filteredClients = useMemo(() => {
@@ -132,7 +135,7 @@ export default function ClientsTable() {
 
   const handleClose = () => {
     setAnchorEl({ element: null, position: null });
-    setSelectedClientId(-1);
+    // setSelectedClientId(id);
     RefreshClients();
   };
 

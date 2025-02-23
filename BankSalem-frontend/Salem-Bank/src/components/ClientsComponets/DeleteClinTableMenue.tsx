@@ -87,9 +87,9 @@ export default function DeleteClinTableMenue({
           </Button>
           <Button
             onClick={() => {
+              handleDelete();
               handleClose();
               onClose();
-              handleDelete();
             }}
             color="error"
           >
