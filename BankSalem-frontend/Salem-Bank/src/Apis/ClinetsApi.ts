@@ -17,7 +17,7 @@ export const FindClientByIdApi = async (clientID: number) => {
         Accept: "text/plain",
       },
     });
-
+    console.log("response.data from FindClientByIdApi", response);
     return response.data;
   } catch (error) {
     console.error("Error fetching clients:", error);

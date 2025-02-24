@@ -23,6 +23,8 @@ export default function Transfer({
   
 }) {
   const [open, setOpen] = React.useState(false);
+  const [amount, setAmount] = React.useState("");
+  const [amountError, setAmountError] = React.useState("");
   const dispatch = useAppDispatch();
   const Client = useAppSelector((state) =>
     state.clients.client);
@@ -38,6 +40,22 @@ export default function Transfer({
 
   const handleClose = () => {
     setOpen(false);
+    setAmount("");
+    setAmountError("");
+  };
+
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setAmount(value);
+    if (!Client?.accountBalance) {
+      setAmountError("Account balance not available");
+    } else if (Number(value) > Client.accountBalance) {
+      setAmountError("Amount cannot be greater than current balance");
+    } else if (Number(value) < 0) {
+      setAmountError("Amount cannot be negative");
+    } else {
+      setAmountError("");
+    }
   };
 
   return (
@@ -54,15 +72,32 @@ export default function Transfer({
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
             const formJson = Object.fromEntries((formData as any).entries());
+            const transferAmount = Number(formJson.amount);
+            
+            if(!Client?.accountBalance) {
+              setAmountError("Account balance not available");
+              return;
+            }
+            else if (transferAmount > Client?.accountBalance) {
+              setAmountError("Amount cannot be greater than current balance");
+              return;
+            }
+            else if (transferAmount < 0) {
+              setAmountError("Amount cannot be negative");
+              return;
+            }
+            else {  
+              setAmountError("");
+            }
+
             const transferRequest = {
               fromClientId: selectedClientID,
               toClientId: Number(formJson.toClientId),
-              amount: Number(formJson.amount),
+              amount: transferAmount,
               userId: 1 // TODO: Get actual userId from auth
             };
 
             dispatch(TransFerSclie(transferRequest));
-            // console.log(transferRequest); // Commented out as per instructions
             handleClose();
           },
         }}
@@ -163,7 +198,11 @@ export default function Transfer({
             type="number"
             fullWidth
             variant="standard"
-            inputProps={{ min: 0, step: "0.01" }}
+            value={amount}
+            onChange={handleAmountChange}
+            error={!!amountError}
+            helperText={amountError}
+            inputProps={{ min: 0, step: "0.01", max: Client?.accountBalance }}
             InputProps={{
               startAdornment: <AttachMoneyIcon sx={{ color: 'action.active', mr: 1 }} />,
             }}
@@ -171,7 +210,7 @@ export default function Transfer({
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} sx={{ color: '#757575' }}>Cancel</Button>
-          <Button type="submit" sx={{ backgroundColor: '#1976d2', color: 'white', '&:hover': { backgroundColor: '#1565c0' } }}>Transfer</Button>
+          <Button type="submit" disabled={!!amountError || Number(amount) <= 0} sx={{ backgroundColor: '#1976d2', color: 'white', '&:hover': { backgroundColor: '#1565c0' } }}>Transfer</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

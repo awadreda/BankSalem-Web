@@ -31,7 +31,7 @@ export default function ShowClientCardFromATM({
 
   React.useEffect(() => {
     dispatch(FindClientByIdClientSlice(selectedClientID));
-    // console.log("from UseEffect SHow ClientCard ATM", Client);
+    console.log("from UseEffect SHow ClientCard ATM", Client);
   }, [open]);
 
   const handleClickOpen = () => {

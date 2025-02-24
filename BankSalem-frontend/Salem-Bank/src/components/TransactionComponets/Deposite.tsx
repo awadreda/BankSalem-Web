@@ -14,9 +14,10 @@ import PersonIcon from '@mui/icons-material/Person';
 import { DepositeSlice } from "../../features/Transactions/TransSlice";
 import { fetchClients } from "../../features/Clinets/ClinetsSlice";
 
-
 export default function Deposite({selectedClientID}: { selectedClientID: number }) {
   const [open, setOpen] = React.useState(false);
+  const [amount, setAmount] = React.useState("");
+  const [error, setError] = React.useState("");
   const dispatch = useAppDispatch();
   const Client = useAppSelector((state) => state.clients.client);
   const CurrentClient = useAppSelector((state) => state.clients.CurrentClient);
@@ -29,11 +30,39 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
   const handleClose = () => {
     dispatch(FindClientByIdClientSlice(selectedClientID));
     setOpen(false);
+    setAmount("");
+    setError("");
+  };
+
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setAmount(value);
+    if (Number(value) < 0) {
+      setError("Amount cannot be negative");
+    } else {
+      setError("");
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (Number(amount) < 0) {
+      setError("Amount cannot be negative");
+      return;
+    }
+    const depositRequest = {
+      clientId: selectedClientID,
+      amount: Number(amount),
+      userId: 1, // TODO: Get actual userId from auth
+    };
+    dispatch(DepositeSlice(depositRequest));
+    dispatch(fetchClients());
+    handleClose();
   };
 
   return (
     <React.Fragment>
-        <Button sx={{ position: CurrentClient ? "absolute" : "relative", width: CurrentClient ? "100%" : "auto" ,height: CurrentClient ? "100%" : "auto" ,opacity: CurrentClient ? 0 : 1 }} variant="outlined" onClick={handleClickOpen}>
+      <Button sx={{ position: CurrentClient ? "absolute" : "relative", width: CurrentClient ? "100%" : "auto" ,height: CurrentClient ? "100%" : "auto" ,opacity: CurrentClient ? 0 : 1 }} variant="outlined" onClick={handleClickOpen}>
         Deposite
       </Button>
       <Dialog
@@ -41,20 +70,7 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
         onClose={handleClose}
         PaperProps={{
           component: "form",
-          onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries((formData as any).entries());
-            const depositRequest = {
-              clientId: selectedClientID,
-              amount: Number(formJson.amount),
-              userId: 1, // TODO: Get actual userId from auth
-            };
-            dispatch(DepositeSlice(depositRequest));
-            dispatch(fetchClients());
-            // console.log(depositRequest); // Commented out as per instructions
-            handleClose();
-          },
+          onSubmit: handleSubmit,
         }}
       >
         <DialogTitle>
@@ -133,16 +149,20 @@ export default function Deposite({selectedClientID}: { selectedClientID: number 
             type="number"
             fullWidth
             variant="standard"
-            inputProps={{ min: 0, step: "0.01" }}
+            value={amount}
+            onChange={handleAmountChange}
+            inputProps={{ step: "0.01" }}
             placeholder="Enter deposit amount"
             InputProps={{
               startAdornment: <AttachMoneyIcon sx={{ color: 'action.active', mr: 1 }} />,
             }}
+            error={!!error}
+            helperText={error}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} sx={{ color: '#757575' }}>Cancel</Button>
-          <Button type="submit" sx={{ backgroundColor: '#1976d2', color: 'white', '&:hover': { backgroundColor: '#1565c0' } }}>Deposit</Button>
+          <Button type="submit" sx={{ backgroundColor: '#1976d2', color: 'white', '&:hover': { backgroundColor: '#1565c0' } }} disabled={!!error}>Deposit</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -30,13 +30,15 @@ export default function ShowClientCard({ selectedClientID }: { selectedClientID:
     state.clients.client);
   const dispatch = useAppDispatch();
 
-   React.useEffect(() => {
-     dispatch(FindClientByIdClientSlice(selectedClientID));
-     // console.log(Client);
-  }, []);
+  //  React.useEffect(() => {
+  //    dispatch(FindClientByIdClientSlice(selectedClientID));
+     
+  //    console.log(Client);
+  // }, []);
 
 
   const handleClickOpen = () => {
+    dispatch(FindClientByIdClientSlice(selectedClientID));
     setOpen(true);
   };
 

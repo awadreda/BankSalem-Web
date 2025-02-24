@@ -10,6 +10,7 @@ import { Client, ClientLogin } from "../../Types/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface ClientState {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [x: string]: any;
   clients: Client[];
   state: "idle" | "loading" | "succeeded" | "failed";
@@ -39,7 +40,7 @@ export const FindClientByIdClientSlice = createAsyncThunk(
   "clients/FindClientByIdClientSlice",
   async (clientID: number) => {
     const response = await FindClientByIdApi(clientID);
-    // console.log("response from ClinetSlice", response);
+    console.log("response from ClinetSlice", response);
     return response;
   }
 );
@@ -105,7 +106,16 @@ const ClinetSlice = createSlice({
       .addCase(FindClientByIdClientSlice.fulfilled, (state, action) => {
         state.state = "idle"; // Set state to idle
         state.client = action.payload; // Store the fetched client data
-
+        //  if(state.client !== null){
+        // state.client.firstName = state.client.firstName
+        // state.client.lastName = state.client.lastName
+        // state.client.email = state.client.email
+        // state.client.pincode = state.client.pincode
+        // state.client.phone = state.client.phone
+        // state.client.accountNumber = state.client.accountNumber
+        // state.client.accountBalance = state.client.accountBalance
+        // state.client.id = state.client.id
+        //  }
         // console.log("action.payload : ", action.payload); // Log the fetched client data
       })
       // Handle the rejected state for finding a client by ID

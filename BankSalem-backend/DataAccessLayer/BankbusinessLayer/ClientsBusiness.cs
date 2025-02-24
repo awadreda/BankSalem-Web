@@ -91,8 +91,8 @@ namespace BankbusinessLayer
                     ref FirstName,
                     ref LastName,
                     ref Email,
-                    ref AccountNumber,
                     ref Phone,
+                    ref AccountNumber,
                     ref PINCODE,
                     ref AccountBalance
                 )

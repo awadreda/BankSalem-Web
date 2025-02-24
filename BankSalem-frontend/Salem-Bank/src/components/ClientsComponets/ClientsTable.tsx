@@ -111,6 +111,7 @@ export default function ClientsTable() {
     if (ClientsAPI.state === "idle") {
       dispatch(fetchClients());
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClientRowClick = (
