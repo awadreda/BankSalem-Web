@@ -40,7 +40,7 @@ export const FindClientByIdClientSlice = createAsyncThunk(
   "clients/FindClientByIdClientSlice",
   async (clientID: number) => {
     const response = await FindClientByIdApi(clientID);
-    console.log("response from ClinetSlice", response);
+    // console.log("response from ClinetSlice", response);
     return response;
   }
 );
